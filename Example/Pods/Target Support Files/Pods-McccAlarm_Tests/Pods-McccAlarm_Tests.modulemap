@@ -1,0 +1,6 @@
+framework module Pods_McccAlarm_Tests {
+  umbrella header "Pods-McccAlarm_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

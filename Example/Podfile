@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '26.0'
+
+target 'McccAlarm_Example' do
+  pod 'McccAlarm', :path => '../'
+
+  target 'McccAlarm_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

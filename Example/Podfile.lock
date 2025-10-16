@@ -1,0 +1,16 @@
+PODS:
+  - McccAlarm (0.1.0)
+
+DEPENDENCIES:
+  - McccAlarm (from `../`)
+
+EXTERNAL SOURCES:
+  McccAlarm:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  McccAlarm: 8084d3b945ecedae8d9c5f1d76023f75421fcbb0
+
+PODFILE CHECKSUM: 7122eefc44af4c35aa387d1b9cf82e13cf265d3f
+
+COCOAPODS: 1.16.2

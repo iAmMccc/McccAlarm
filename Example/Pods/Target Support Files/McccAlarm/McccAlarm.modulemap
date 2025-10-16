@@ -1,0 +1,6 @@
+framework module McccAlarm {
+  umbrella header "McccAlarm-umbrella.h"
+
+  export *
+  module * { export * }
+}
