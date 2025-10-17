@@ -92,9 +92,10 @@ extension ViewController {
         // MARK: - 3. 设置倒计时时长
         
         // CountdownDuration 参数说明：
-        // - preAlert: 5 秒，倒计时时长，倒计时结束后触发闹钟
-        // - postAlert: 5 秒，闹钟响起后的持续时间
-        let countDown = Alarm.CountdownDuration(preAlert: 5, postAlert: 5)
+        // - preAlert: 5 秒，首次倒计时时长，从开始到第一次闹钟响起的时间
+        // - postAlert: 5 秒，贪睡/重复倒计时时长，点击"重复"按钮后再次倒计时的时间间隔
+        //   如果设置为 nil，则使用 preAlert 的值
+        let countDown = Alarm.CountdownDuration(preAlert: 500, postAlert: 5)
         
         // MARK: - 4. 创建闹钟配置对象
         
@@ -121,14 +122,5 @@ extension ViewController {
             print("📋 当前活跃闹钟数量: \(alarms.count)")
             print("📋 所有闹钟: \(alarms)")
         }
-    }
-}
-
-
-struct SimpleMetadata: AlarmMetadata {
-    let createdAt: Date
-    
-    init() {
-        self.createdAt = Date()
     }
 }

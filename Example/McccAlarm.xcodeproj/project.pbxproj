@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,11 @@
 		999A30292EA10FC6002C18FD /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A30262EA10FC6002C18FD /* UITableView+Reusable.swift */; };
 		999A302A2EA10FC6002C18FD /* ArraySafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A30272EA10FC6002C18FD /* ArraySafe.swift */; };
 		999A30EF2EA232A7002C18FD /* ViewController+Manage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A30EE2EA232A7002C18FD /* ViewController+Manage.swift */; };
+		999A30CD2EA22BD8002C18FD /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999A30CC2EA22BD8002C18FD /* WidgetKit.framework */; };
+		999A30CF2EA22BD8002C18FD /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999A30CE2EA22BD8002C18FD /* SwiftUI.framework */; };
+		999A30E02EA22BDA002C18FD /* McccAlarmActivityExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 999A30CB2EA22BD8002C18FD /* McccAlarmActivityExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		999A30EC2EA22D17002C18FD /* SimpleMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A30EB2EA22D17002C18FD /* SimpleMetadata.swift */; };
+		999A30ED2EA22D2E002C18FD /* SimpleMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A30EB2EA22D17002C18FD /* SimpleMetadata.swift */; };
 		C7F24A473079D8E226503C73 /* Pods_McccAlarm_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B96DFAFA16A39896D26556D6 /* Pods_McccAlarm_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +36,28 @@
 			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
 			remoteInfo = McccAlarm;
 		};
+		999A30DE2EA22BDA002C18FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 999A30CA2EA22BD8002C18FD;
+			remoteInfo = McccAlarmActivityExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		999A30E12EA22BDA002C18FD /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				999A30E02EA22BDA002C18FD /* McccAlarmActivityExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00D7D7045A958197C74EF144 /* Pods-McccAlarm_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McccAlarm_Tests.debug.xcconfig"; path = "Target Support Files/Pods-McccAlarm_Tests/Pods-McccAlarm_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -54,12 +80,30 @@
 		999A30262EA10FC6002C18FD /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		999A30272EA10FC6002C18FD /* ArraySafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraySafe.swift; sourceTree = "<group>"; };
 		999A30EE2EA232A7002C18FD /* ViewController+Manage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Manage.swift"; sourceTree = "<group>"; };
+		999A30CB2EA22BD8002C18FD /* McccAlarmActivityExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = McccAlarmActivityExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		999A30CC2EA22BD8002C18FD /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		999A30CE2EA22BD8002C18FD /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		999A30EB2EA22D17002C18FD /* SimpleMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMetadata.swift; sourceTree = "<group>"; };
 		A1B8BD7AE295C44699881308 /* Pods_McccAlarm_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McccAlarm_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B96DFAFA16A39896D26556D6 /* Pods_McccAlarm_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McccAlarm_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8C81DC6EE89805DC45DA0C7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		CC7323A3D67BF0BEB934920B /* McccAlarm.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = McccAlarm.podspec; path = ../McccAlarm.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D174FD391BF7CA30B1DB294C /* Pods-McccAlarm_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McccAlarm_Tests.release.xcconfig"; path = "Target Support Files/Pods-McccAlarm_Tests/Pods-McccAlarm_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		999A30E42EA22BDA002C18FD /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 999A30CA2EA22BD8002C18FD /* McccAlarmActivityExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		999A30D02EA22BD8002C18FD /* McccAlarmActivity */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (999A30E42EA22BDA002C18FD /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = McccAlarmActivity; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		607FACCD1AFB9204008FA782 /* Frameworks */ = {
@@ -78,6 +122,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		999A30C82EA22BD8002C18FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				999A30CF2EA22BD8002C18FD /* SwiftUI.framework in Frameworks */,
+				999A30CD2EA22BD8002C18FD /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -86,6 +139,8 @@
 			children = (
 				A1B8BD7AE295C44699881308 /* Pods_McccAlarm_Example.framework */,
 				B96DFAFA16A39896D26556D6 /* Pods_McccAlarm_Tests.framework */,
+				999A30CC2EA22BD8002C18FD /* WidgetKit.framework */,
+				999A30CE2EA22BD8002C18FD /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -96,6 +151,7 @@
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for McccAlarm */,
 				607FACE81AFB9204008FA782 /* Tests */,
+				999A30D02EA22BD8002C18FD /* McccAlarmActivity */,
 				607FACD11AFB9204008FA782 /* Products */,
 				A7B726193A58DE69AF83DB8D /* Pods */,
 				48A08C7D1A3D41E5F7B64E3C /* Frameworks */,
@@ -107,6 +163,7 @@
 			children = (
 				607FACD01AFB9204008FA782 /* McccAlarm_Example.app */,
 				607FACE51AFB9204008FA782 /* McccAlarm_Tests.xctest */,
+				999A30CB2EA22BD8002C18FD /* McccAlarmActivityExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,6 +171,7 @@
 		607FACD21AFB9204008FA782 /* Example for McccAlarm */ = {
 			isa = PBXGroup;
 			children = (
+				999A30EA2EA22D06002C18FD /* Shared */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				999A301C2EA10E95002C18FD /* ViewController.swift */,
 				999A30EE2EA232A7002C18FD /* ViewController+Manage.swift */,
@@ -174,6 +232,14 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
+		999A30EA2EA22D06002C18FD /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				999A30EB2EA22D17002C18FD /* SimpleMetadata.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		A7B726193A58DE69AF83DB8D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,10 +263,12 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				39A9898E7FDF9FA6A696C507 /* [CP] Embed Pods Frameworks */,
+				999A30E12EA22BDA002C18FD /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				999A30DF2EA22BDA002C18FD /* PBXTargetDependency */,
 			);
 			name = McccAlarm_Example;
 			productName = McccAlarm;
@@ -226,13 +294,35 @@
 			productReference = 607FACE51AFB9204008FA782 /* McccAlarm_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		999A30CA2EA22BD8002C18FD /* McccAlarmActivityExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 999A30E52EA22BDA002C18FD /* Build configuration list for PBXNativeTarget "McccAlarmActivityExtension" */;
+			buildPhases = (
+				999A30C72EA22BD8002C18FD /* Sources */,
+				999A30C82EA22BD8002C18FD /* Frameworks */,
+				999A30C92EA22BD8002C18FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				999A30D02EA22BD8002C18FD /* McccAlarmActivity */,
+			);
+			name = McccAlarmActivityExtension;
+			packageProductDependencies = (
+			);
+			productName = McccAlarmActivityExtension;
+			productReference = 999A30CB2EA22BD8002C18FD /* McccAlarmActivityExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
@@ -246,6 +336,9 @@
 						DevelopmentTeam = XJ6YHRS6AW;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
+					};
+					999A30CA2EA22BD8002C18FD = {
+						CreatedOnToolsVersion = 26.0.1;
 					};
 				};
 			};
@@ -265,6 +358,7 @@
 			targets = (
 				607FACCF1AFB9204008FA782 /* McccAlarm_Example */,
 				607FACE41AFB9204008FA782 /* McccAlarm_Tests */,
+				999A30CA2EA22BD8002C18FD /* McccAlarmActivityExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -281,6 +375,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		607FACE31AFB9204008FA782 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		999A30C92EA22BD8002C18FD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -362,6 +463,7 @@
 				999A30222EA10E95002C18FD /* ViewController+Countdown.swift in Sources */,
 				999A30EF2EA232A7002C18FD /* ViewController+Manage.swift in Sources */,
 				999A30232EA10E95002C18FD /* ViewController+Authorization.swift in Sources */,
+				999A30EC2EA22D17002C18FD /* SimpleMetadata.swift in Sources */,
 				999A30242EA10E95002C18FD /* ViewController+Test.swift in Sources */,
 				999A30252EA10E95002C18FD /* ViewController.swift in Sources */,
 				999A30292EA10FC6002C18FD /* UITableView+Reusable.swift in Sources */,
@@ -378,6 +480,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		999A30C72EA22BD8002C18FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				999A30ED2EA22D2E002C18FD /* SimpleMetadata.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -385,6 +495,11 @@
 			isa = PBXTargetDependency;
 			target = 607FACCF1AFB9204008FA782 /* McccAlarm_Example */;
 			targetProxy = 607FACE61AFB9204008FA782 /* PBXContainerItemProxy */;
+		};
+		999A30DF2EA22BDA002C18FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 999A30CA2EA22BD8002C18FD /* McccAlarmActivityExtension */;
+			targetProxy = 999A30DE2EA22BDA002C18FD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -502,7 +617,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -515,7 +631,10 @@
 				DEVELOPMENT_TEAM = XJ6YHRS6AW;
 				INFOPLIST_FILE = McccAlarm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 26;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -532,7 +651,10 @@
 				DEVELOPMENT_TEAM = XJ6YHRS6AW;
 				INFOPLIST_FILE = McccAlarm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 26;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -556,7 +678,11 @@
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 26;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -576,12 +702,109 @@
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 26;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/McccAlarm_Example.app/McccAlarm_Example";
+			};
+			name = Release;
+		};
+		999A30E22EA22BDA002C18FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = XJ6YHRS6AW;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = McccAlarmActivity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = McccAlarmActivity;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 CocoaPods. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.McccAlarm-Example.McccAlarmActivity";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		999A30E32EA22BDA002C18FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XJ6YHRS6AW;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = McccAlarmActivity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = McccAlarmActivity;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 CocoaPods. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.McccAlarm-Example.McccAlarmActivity";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -611,6 +834,15 @@
 			buildConfigurations = (
 				607FACF31AFB9204008FA782 /* Debug */,
 				607FACF41AFB9204008FA782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		999A30E52EA22BDA002C18FD /* Build configuration list for PBXNativeTarget "McccAlarmActivityExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				999A30E22EA22BDA002C18FD /* Debug */,
+				999A30E32EA22BDA002C18FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
