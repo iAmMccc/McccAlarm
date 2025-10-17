@@ -24,21 +24,7 @@ extension ViewController {
     
     
     func didSelectSection1(atRow row: Int) {
-        
-        do {
-            let alarms = try AlarmManager.shared.alarms
-            
-            for alarm in alarms {
-                try AlarmManager.shared.cancel(id: alarm.id)
-            }
-        } catch {
-            print("error = \(error)")
-        }
-        
 
-        
-        
-        
         switch row {
         case 0:
             

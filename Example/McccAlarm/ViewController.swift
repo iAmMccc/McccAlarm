@@ -22,6 +22,7 @@ class ViewController: UIViewController {
         dataArray = [
             alarm_test,
             alarm_authorization,
+            alarm_manage,
             alarm_countdowm
         ]
         
@@ -115,8 +116,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             didSelectSection1(atRow: indexPath.row)
         case 2:
             didSelectSection2(atRow: indexPath.row)
-//        case 3:
-//            didSelectSection3(atRow: indexPath.row)
+        case 3:
+            didSelectSection3(atRow: indexPath.row)
 //        case 4:
 //            locationManager.requestAlwaysAuthorization()
 //            didSelectSection4(atRow: indexPath.row)

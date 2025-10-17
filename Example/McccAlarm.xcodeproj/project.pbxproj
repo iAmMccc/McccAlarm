@@ -13,13 +13,13 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		999A30212EA10E95002C18FD /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A30202EA10E95002C18FD /* TestViewController.swift */; };
 		999A30222EA10E95002C18FD /* ViewController+Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A301D2EA10E95002C18FD /* ViewController+Countdown.swift */; };
 		999A30232EA10E95002C18FD /* ViewController+Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A301F2EA10E95002C18FD /* ViewController+Authorization.swift */; };
 		999A30242EA10E95002C18FD /* ViewController+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A301E2EA10E95002C18FD /* ViewController+Test.swift */; };
 		999A30252EA10E95002C18FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A301C2EA10E95002C18FD /* ViewController.swift */; };
 		999A30292EA10FC6002C18FD /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A30262EA10FC6002C18FD /* UITableView+Reusable.swift */; };
 		999A302A2EA10FC6002C18FD /* ArraySafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A30272EA10FC6002C18FD /* ArraySafe.swift */; };
+		999A30EF2EA232A7002C18FD /* ViewController+Manage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A30EE2EA232A7002C18FD /* ViewController+Manage.swift */; };
 		C7F24A473079D8E226503C73 /* Pods_McccAlarm_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B96DFAFA16A39896D26556D6 /* Pods_McccAlarm_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,9 +51,9 @@
 		999A301D2EA10E95002C18FD /* ViewController+Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Countdown.swift"; sourceTree = "<group>"; };
 		999A301E2EA10E95002C18FD /* ViewController+Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Test.swift"; sourceTree = "<group>"; };
 		999A301F2EA10E95002C18FD /* ViewController+Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Authorization.swift"; sourceTree = "<group>"; };
-		999A30202EA10E95002C18FD /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		999A30262EA10FC6002C18FD /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		999A30272EA10FC6002C18FD /* ArraySafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraySafe.swift; sourceTree = "<group>"; };
+		999A30EE2EA232A7002C18FD /* ViewController+Manage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Manage.swift"; sourceTree = "<group>"; };
 		A1B8BD7AE295C44699881308 /* Pods_McccAlarm_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McccAlarm_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B96DFAFA16A39896D26556D6 /* Pods_McccAlarm_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McccAlarm_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8C81DC6EE89805DC45DA0C7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -116,10 +116,10 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				999A301C2EA10E95002C18FD /* ViewController.swift */,
+				999A30EE2EA232A7002C18FD /* ViewController+Manage.swift */,
 				999A301D2EA10E95002C18FD /* ViewController+Countdown.swift */,
 				999A301E2EA10E95002C18FD /* ViewController+Test.swift */,
 				999A301F2EA10E95002C18FD /* ViewController+Authorization.swift */,
-				999A30202EA10E95002C18FD /* TestViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				999A30282EA10FC6002C18FD /* Support */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
@@ -359,8 +359,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				999A30212EA10E95002C18FD /* TestViewController.swift in Sources */,
 				999A30222EA10E95002C18FD /* ViewController+Countdown.swift in Sources */,
+				999A30EF2EA232A7002C18FD /* ViewController+Manage.swift in Sources */,
 				999A30232EA10E95002C18FD /* ViewController+Authorization.swift in Sources */,
 				999A30242EA10E95002C18FD /* ViewController+Test.swift in Sources */,
 				999A30252EA10E95002C18FD /* ViewController.swift in Sources */,
