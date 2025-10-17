@@ -8,6 +8,10 @@
 
 import Foundation
 import McccAlarm
+import AlarmKit
+
+
+
 extension ViewController {
     var alarm_authorization: [String: Any] {
         [
@@ -20,8 +24,28 @@ extension ViewController {
     
     
     func didSelectSection1(atRow row: Int) {
+        
+        do {
+            let alarms = try AlarmManager.shared.alarms
+            
+            for alarm in alarms {
+                try AlarmManager.shared.cancel(id: alarm.id)
+            }
+        } catch {
+            print("error = \(error)")
+        }
+        
+
+        
+        
+        
         switch row {
         case 0:
+            
+            Task {
+                let state = await McccAlarm.shared.requestAuthorization()
+                print("当前授权状态为：\(state)")
+            }
             break
             
         case 1:

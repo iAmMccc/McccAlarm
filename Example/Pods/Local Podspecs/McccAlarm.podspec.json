@@ -2,7 +2,6 @@
   "name": "McccAlarm",
   "version": "0.1.0",
   "summary": "A short description of McccAlarm.",
-  "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/iAmMccc/McccAlarm",
   "license": {
     "type": "MIT",
@@ -16,7 +15,7 @@
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "10.0"
+    "ios": "26.0"
   },
   "source_files": "McccAlarm/Classes/**/*"
 }
