@@ -10,15 +10,15 @@ import AlarmKit
 
 extension AlarmButton {
     public static var openAppButton: Self {
-        AlarmButton(text: "打开App", textColor: .black, systemImageName: "swift")
+        AlarmButton(text: "打开App", textColor: .black, systemImageName: "app")
     }
     
     public static var pauseButton: Self {
-        AlarmButton(text: "暂停", textColor: .black, systemImageName: "pause.fill")
+        AlarmButton(text: "暂停", textColor: .black, systemImageName: "pause.circle")
     }
     
     public static var resumeButton: Self {
-        AlarmButton(text: "开始", textColor: .black, systemImageName: "play.fill")
+        AlarmButton(text: "开始", textColor: .black, systemImageName: "play.circle")
     }
     
     public static var repeatButton: Self {

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 71;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,7 @@
 		6DBA8890AA4AFA3EDF3E0AB13C61FDE4 /* Pods-McccAlarm_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CD6E14961C23C9356BD606C056D86D8 /* Pods-McccAlarm_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7620517B058B2869D0BF9E7329C9F21A /* McccAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED118750CFA4E27911F4B9DA07F6F06 /* McccAlarm.swift */; };
 		85225733D5486ABB68F2E12BDF8116C6 /* AlarmButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715CCFF030CB8376D92A961C382972E7 /* AlarmButton+Extension.swift */; };
+		999A327D2EA79680002C18FD /* McccAlarm+Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A327C2EA79680002C18FD /* McccAlarm+Authorization.swift */; };
 		E2CF292EC049995D2AE77D6A0BB4092D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,28 +40,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04A500578E58D5B35B092505C635B127 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		04A500578E58D5B35B092505C635B127 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		05EB2D6497EEC90F23B059A831232359 /* McccAlarm-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "McccAlarm-prefix.pch"; sourceTree = "<group>"; };
 		0E691C519A9CA4283DBAA8EE72485A89 /* McccAlarm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = McccAlarm.debug.xcconfig; sourceTree = "<group>"; };
 		0F72D193AE881A43FABB3BAB63ED912B /* Pods-McccAlarm_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-McccAlarm_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		16C515CCF9C7F861E77150320213622B /* Pods-McccAlarm_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-McccAlarm_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		1CFDEFBD085047FB6177C0DEF2F7BE54 /* McccAlarm */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = McccAlarm; path = McccAlarm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CFDEFBD085047FB6177C0DEF2F7BE54 /* McccAlarm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = McccAlarm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		206B06C72D65D62F01EC5ACC78EE20C6 /* McccAlarmMetaData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = McccAlarmMetaData.swift; path = McccAlarm/Classes/McccAlarmMetaData.swift; sourceTree = "<group>"; };
 		2CD6E14961C23C9356BD606C056D86D8 /* Pods-McccAlarm_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-McccAlarm_Example-umbrella.h"; sourceTree = "<group>"; };
-		2D5840EF491E5C78C9FF23B826893A15 /* Pods-McccAlarm_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-McccAlarm_Tests"; path = Pods_McccAlarm_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D5840EF491E5C78C9FF23B826893A15 /* Pods_McccAlarm_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McccAlarm_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FD99C2C105D3A0DDDC89F2C221EB7E4 /* Pods-McccAlarm_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-McccAlarm_Example-Info.plist"; sourceTree = "<group>"; };
 		384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		4249F962A6AD8ABDBB16ED6E74CC23F6 /* Pods-McccAlarm_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-McccAlarm_Tests-umbrella.h"; sourceTree = "<group>"; };
 		446EBECBCF3076356C0C9B72E26810B1 /* McccAlarm-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "McccAlarm-Info.plist"; sourceTree = "<group>"; };
 		49815209154AE5FFC125D265321A7329 /* Pods-McccAlarm_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-McccAlarm_Example-frameworks.sh"; sourceTree = "<group>"; };
 		715CCFF030CB8376D92A961C382972E7 /* AlarmButton+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "AlarmButton+Extension.swift"; path = "McccAlarm/Classes/AlarmButton+Extension.swift"; sourceTree = "<group>"; };
-		7A94B5C112B5B30416FD154658DB3CB2 /* McccAlarm.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = McccAlarm.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		7A94B5C112B5B30416FD154658DB3CB2 /* McccAlarm.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = McccAlarm.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		7CCF5E0EF8D1F75AC512D31E8AF45BD4 /* McccAlarm-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "McccAlarm-dummy.m"; sourceTree = "<group>"; };
 		8C0561A239EB55F3B1A076A88DFC7EA5 /* McccAlarm-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "McccAlarm-umbrella.h"; sourceTree = "<group>"; };
 		8C95A8A461D6677058B40DB1C7BEFB14 /* Pods-McccAlarm_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-McccAlarm_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		999A327C2EA79680002C18FD /* McccAlarm+Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "McccAlarm+Authorization.swift"; path = "McccAlarm/Classes/McccAlarm+Authorization.swift"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A6373A5599523B9E15CF0824C8E96E02 /* Pods-McccAlarm_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-McccAlarm_Example-dummy.m"; sourceTree = "<group>"; };
-		A6C39E36E74480FBC91AA22BC12789AC /* Pods-McccAlarm_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-McccAlarm_Example"; path = Pods_McccAlarm_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6C39E36E74480FBC91AA22BC12789AC /* Pods_McccAlarm_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McccAlarm_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7C110B590B929C410D3339D48FAD212 /* Pods-McccAlarm_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-McccAlarm_Tests-Info.plist"; sourceTree = "<group>"; };
 		ACAE6803DC852F8FE8477F59A386D7B8 /* Pods-McccAlarm_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-McccAlarm_Example.modulemap"; sourceTree = "<group>"; };
 		B2819D21FEF5B920B06A32307CF388EA /* McccAlarm.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = McccAlarm.modulemap; sourceTree = "<group>"; };
@@ -70,7 +72,7 @@
 		DAF99119F786E60419C24F677AA85398 /* Pods-McccAlarm_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-McccAlarm_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		DBD7350892828C8DA4014380FF74C4A4 /* Pods-McccAlarm_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-McccAlarm_Tests-dummy.m"; sourceTree = "<group>"; };
 		E966A3B77FEF7D07C9D3871254151F13 /* Pods-McccAlarm_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-McccAlarm_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		EB84003A81C5D8ECD51B88C4C1FEC5BF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		EB84003A81C5D8ECD51B88C4C1FEC5BF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		F827AC59461DA3F227C6BEFDB2ED2F46 /* Pods-McccAlarm_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-McccAlarm_Example.release.xcconfig"; sourceTree = "<group>"; };
 		F828E3C1FB7C6A6FC6C2A814722EA803 /* Pods-McccAlarm_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-McccAlarm_Tests.modulemap"; sourceTree = "<group>"; };
 		FDCA7725A706BB068B6B794198792933 /* Pods-McccAlarm_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-McccAlarm_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				715CCFF030CB8376D92A961C382972E7 /* AlarmButton+Extension.swift */,
+				999A327C2EA79680002C18FD /* McccAlarm+Authorization.swift */,
 				CED118750CFA4E27911F4B9DA07F6F06 /* McccAlarm.swift */,
 				206B06C72D65D62F01EC5ACC78EE20C6 /* McccAlarmMetaData.swift */,
 				4DDFAFB4AA5A328A75600A38222BAD9E /* Pod */,
@@ -179,9 +182,9 @@
 		C9C18F6409B23CAC043BD90DA0B20304 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1CFDEFBD085047FB6177C0DEF2F7BE54 /* McccAlarm */,
-				A6C39E36E74480FBC91AA22BC12789AC /* Pods-McccAlarm_Example */,
-				2D5840EF491E5C78C9FF23B826893A15 /* Pods-McccAlarm_Tests */,
+				1CFDEFBD085047FB6177C0DEF2F7BE54 /* McccAlarm.framework */,
+				A6C39E36E74480FBC91AA22BC12789AC /* Pods_McccAlarm_Example.framework */,
+				2D5840EF491E5C78C9FF23B826893A15 /* Pods_McccAlarm_Tests.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -275,7 +278,7 @@
 			);
 			name = "Pods-McccAlarm_Example";
 			productName = Pods_McccAlarm_Example;
-			productReference = A6C39E36E74480FBC91AA22BC12789AC /* Pods-McccAlarm_Example */;
+			productReference = A6C39E36E74480FBC91AA22BC12789AC /* Pods_McccAlarm_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		3887FC15F9B1DEE06D300C679756240F /* McccAlarm */ = {
@@ -293,7 +296,7 @@
 			);
 			name = McccAlarm;
 			productName = McccAlarm;
-			productReference = 1CFDEFBD085047FB6177C0DEF2F7BE54 /* McccAlarm */;
+			productReference = 1CFDEFBD085047FB6177C0DEF2F7BE54 /* McccAlarm.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		94D361D434219DD9B60772DED87DD5E4 /* Pods-McccAlarm_Tests */ = {
@@ -312,7 +315,7 @@
 			);
 			name = "Pods-McccAlarm_Tests";
 			productName = Pods_McccAlarm_Tests;
-			productReference = 2D5840EF491E5C78C9FF23B826893A15 /* Pods-McccAlarm_Tests */;
+			productReference = 2D5840EF491E5C78C9FF23B826893A15 /* Pods_McccAlarm_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -333,8 +336,6 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			minimizedProjectReferenceProxies = 0;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = C9C18F6409B23CAC043BD90DA0B20304 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -395,6 +396,7 @@
 				7620517B058B2869D0BF9E7329C9F21A /* McccAlarm.swift in Sources */,
 				5B736DB35A4C3A5B9F30DA5D8228E492 /* McccAlarm-dummy.m in Sources */,
 				08A05BC8DFA09AFF4F246052C0C096F0 /* McccAlarmMetaData.swift in Sources */,
+				999A327D2EA79680002C18FD /* McccAlarm+Authorization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

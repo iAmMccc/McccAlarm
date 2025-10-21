@@ -139,19 +139,38 @@ extension ViewController {
 extension ViewController {
     private func didSelectRow1() {
         
-        let alert = AlarmPresentation.Alert(title: "倒计时闹钟", stopButton: .stopButton)
+        let alertContent = AlarmPresentation.Alert(
+            title: "这是title类",
+            stopButton: .stopButton,
+            secondaryButton: .openAppButton,
+            secondaryButtonBehavior: .custom
+        )
         
-        let presentation = AlarmPresentation.init(alert: alert)
+        let countdownContent = AlarmPresentation.Countdown(title: "这是Countdown", pauseButton: .pauseButton)
+        let pausedContent = AlarmPresentation.Paused(title: "这是Paused", resumeButton: .resumeButton)
+        
+        let presentation = AlarmPresentation.init(
+            alert: alertContent,
+            countdown: countdownContent,
+            paused: pausedContent
+        )
+        
         let attributes = AlarmAttributes(
             presentation: presentation,
             metadata: SimpleMetadata(),
             tintColor: Color.red
         )
         
-        let config = AlarmManager.AlarmConfiguration.timer(duration: 5, attributes: attributes)
-        
-        
         let id = UUID()
+
+        let config = AlarmManager.AlarmConfiguration.timer(
+            duration: 5,
+            attributes: attributes,
+            stopIntent: StopIntent(),
+            secondaryIntent: OpenAlarmAppIntent(alarmID: id.uuidString)
+        )
+        
+        
         
         Task {
             let alarm = try await AlarmManager.shared.schedule(id: id, configuration: config)

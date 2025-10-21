@@ -2,32 +2,22 @@
 import Foundation
 import AlarmKit
 
+
+
+/** Todo List
+ * 1. 做一个通用的App内的响铃页面。 支持配置。
+ * 2.
+ 
+ 
+ */
+
+
 public struct McccAlarm {
     public static let shared = McccAlarm()
     
-    private let alarmManager = AlarmManager.shared
-    
-
-
+    let alarmManager = AlarmManager.shared
 }
 
 
-// MARK: 授权
-extension McccAlarm {
-    public func requestAuthorization() async -> Bool {
 
-        switch alarmManager.authorizationState {
-        case .notDetermined:
-            do {
-                let state = try await alarmManager.requestAuthorization()
-                return state == .authorized
-            } catch {
-                return false
-            }
-        case .denied: return false
-        case .authorized: return true
-        @unknown default: return false
-        }
-    }
-}
 

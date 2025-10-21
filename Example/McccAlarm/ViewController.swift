@@ -14,6 +14,8 @@ import McccAlarm
  1. 倒计时
  2. 重复
  3. 管理闹钟
+ 4. 如何设置alert状态的UI
+ 5. 如何设置多个不同的倒计时UI 和 多个不同的响铃UI？
  
  */
 
@@ -41,6 +43,19 @@ class ViewController: UIViewController {
         tableView.frame = view.bounds
         tableView.reloadData()
         
+        // 在 App 启动时设置监听
+        NotificationCenter.default.addObserver(
+            forName: NSNotification.Name("OpenAlarmAppIntentPerformed"),
+            object: nil,
+            queue: .main
+        ) { notification in
+            if let alarmID = notification.userInfo?["alarmID"] as? String {
+                print("OpenAlarmAppIntent 被点击，alarmID: \(alarmID)")
+                // 执行你的特定操作
+                self.handleOpenAppIntent(alarmID: alarmID)
+            }
+        }
+        
     }
     
     lazy var tableView = UITableView.make(registerCells: [UITableViewCell.self], delegate: self, style: .grouped)
@@ -66,6 +81,35 @@ class ViewController: UIViewController {
          
          */
         
+    }
+}
+
+
+extension ViewController {
+    private func handleOpenAppIntent(alarmID: String) {
+        // 这里执行你的特定操作
+        print("处理 OpenAlarmAppIntent，alarmID: \(alarmID)")
+        
+        DispatchQueue.main.async {
+            
+            
+            // 创建 UIAlertController
+            let alertController = UIAlertController(
+                title: "闹钟应用已打开",
+                message: "",
+                preferredStyle: .alert
+            )
+            
+            // 添加确定按钮
+            let okAction = UIAlertAction(title: "确定", style: .default) { _ in
+                // 点击确定后的操作
+                print("用户确认了提示")
+            }
+            alertController.addAction(okAction)
+            
+            // 显示 Alert
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 }
 

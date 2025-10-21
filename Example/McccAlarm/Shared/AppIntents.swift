@@ -13,7 +13,12 @@ import AppIntents
 // MARK: - 暂停 Intent
 struct PauseIntent: LiveActivityIntent {
     func perform() throws -> some IntentResult {
-        try AlarmManager.shared.pause(id: UUID(uuidString: alarmID)!)
+        if let uuid = UUID(uuidString: alarmID) {
+            try AlarmManager.shared.pause(id: uuid)
+        } else {
+            print("异常的alarmID = \(alarmID)")
+        }
+        
         return .result()
     }
 
@@ -35,7 +40,13 @@ struct PauseIntent: LiveActivityIntent {
 // MARK: - 停止 Intent
 struct StopIntent: LiveActivityIntent {
     func perform() throws -> some IntentResult {
-        try AlarmManager.shared.stop(id: UUID(uuidString: alarmID)!)
+        
+        if let uuid = UUID(uuidString: alarmID) {
+            try AlarmManager.shared.stop(id: uuid)
+        } else {
+            print("异常的alarmID = \(alarmID)")
+        }
+        
         return .result()
     }
 
@@ -57,7 +68,11 @@ struct StopIntent: LiveActivityIntent {
 // MARK: - 恢复 Intent
 struct ResumeIntent: LiveActivityIntent {
     func perform() throws -> some IntentResult {
-        try AlarmManager.shared.resume(id: UUID(uuidString: alarmID)!)
+        if let uuid = UUID(uuidString: alarmID) {
+            try AlarmManager.shared.resume(id: uuid)
+        } else {
+            print("异常的alarmID = \(alarmID)")
+        }
         return .result()
     }
 
@@ -76,3 +91,33 @@ struct ResumeIntent: LiveActivityIntent {
     }
 }
 
+struct OpenAlarmAppIntent: LiveActivityIntent {
+    func perform() throws -> some IntentResult {
+        try AlarmManager.shared.stop(id: UUID(uuidString: alarmID)!)
+        
+        // 发送通知
+        NotificationCenter.default.post(
+            name: NSNotification.Name("OpenAlarmAppIntentPerformed"),
+            object: nil,
+            userInfo: ["alarmID": alarmID]
+        )
+        
+        
+        return .result()
+    }
+    
+    static var title: LocalizedStringResource = "Open App"
+    static var description = IntentDescription("Opens the Sample app")
+    static var openAppWhenRun = true
+    
+    @Parameter(title: "alarmID")
+    var alarmID: String
+    
+    init(alarmID: String) {
+        self.alarmID = alarmID
+    }
+    
+    init() {
+        self.alarmID = ""
+    }
+}

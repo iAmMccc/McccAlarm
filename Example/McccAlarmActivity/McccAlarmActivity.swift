@@ -106,7 +106,7 @@ struct McccAlarmActivity: Widget {
             Spacer()
             
             // 控制按钮
-            alarmControls(presentation: attributes.presentation, state: state)
+            AlarmControls(presentation: attributes.presentation, state: state)
         }
     }
     
@@ -158,63 +158,63 @@ struct McccAlarmActivity: Widget {
             .fontWeight(.semibold)
             .lineLimit(1)
     }
-    
-    // MARK: - 控制按钮
-    @ViewBuilder func alarmControls(
-        presentation: AlarmPresentation, 
-        state: AlarmPresentationState
-    ) -> some View {
-        HStack(spacing: 8) {
-            switch state.mode {
-            case .alert:
-                // ⭐ Alert 状态：显示停止按钮和第二按钮
-                // 停止按钮
-                let stopButton = presentation.alert.stopButton 
-                    Button(stopButton.text.toString()) {
-                        // 系统自动处理
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.red)
-                    .frame(minWidth: 80, idealWidth: 90, maxWidth: 120, minHeight: 32, maxHeight: 36)
-                
-                
-                // 第二按钮（重复/稍后提醒）
-                if let secondaryButton = presentation.alert.secondaryButton {
-                    Button(secondaryButton.text.toString()) {
-                        // 系统自动处理
-                    }
-                    .buttonStyle(.bordered)
-                    .tint(.blue)
-                    .frame(minWidth: 80, idealWidth: 90, maxWidth: 120, minHeight: 32, maxHeight: 36)
-                }
-                
-            case .countdown:
-                // 暂停按钮
-                if let pauseButton = presentation.countdown?.pauseButton {
-                    Button(pauseButton.text.toString()) {
-                        // 系统自动处理
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.orange)
-                    .frame(minWidth: 80, idealWidth: 80, maxWidth: 120, minHeight: 30, maxHeight: 36)
-                }
-                
-            case .paused:
-                // 恢复按钮
-                if let resumeButton = presentation.paused?.resumeButton {
-                    Button(resumeButton.text.toString()) {
-                        // 系统自动处理
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.green)
-                    .frame(minWidth: 80, idealWidth: 80, maxWidth: 120, minHeight: 30, maxHeight: 36)
-                }
-                
-            @unknown default:
-                EmptyView()
-            }
-        }
-    }
+//    
+//    // MARK: - 控制按钮
+//    @ViewBuilder func alarmControls(
+//        presentation: AlarmPresentation, 
+//        state: AlarmPresentationState
+//    ) -> some View {
+//        HStack(spacing: 8) {
+//            switch state.mode {
+//            case .alert:
+//                // ⭐ Alert 状态：显示停止按钮和第二按钮
+//                // 停止按钮
+//                let stopButton = presentation.alert.stopButton 
+//                    Button(stopButton.text.toString()) {
+//                        // 系统自动处理
+//                    }
+//                    .buttonStyle(.borderedProminent)
+//                    .tint(.red)
+//                    .frame(minWidth: 80, idealWidth: 90, maxWidth: 120, minHeight: 32, maxHeight: 36)
+//                
+//                
+//                // 第二按钮（重复/稍后提醒）
+//                if let secondaryButton = presentation.alert.secondaryButton {
+//                    Button(secondaryButton.text.toString()) {
+//                        // 系统自动处理
+//                    }
+//                    .buttonStyle(.bordered)
+//                    .tint(.blue)
+//                    .frame(minWidth: 80, idealWidth: 90, maxWidth: 120, minHeight: 32, maxHeight: 36)
+//                }
+//                
+//            case .countdown:
+//                // 暂停按钮
+//                if let pauseButton = presentation.countdown?.pauseButton {
+//                    Button(pauseButton.text.toString()) {
+//                        // 系统自动处理
+//                    }
+//                    .buttonStyle(.borderedProminent)
+//                    .tint(.orange)
+//                    .frame(minWidth: 80, idealWidth: 80, maxWidth: 120, minHeight: 30, maxHeight: 36)
+//                }
+//                
+//            case .paused:
+//                // 恢复按钮
+//                if let resumeButton = presentation.paused?.resumeButton {
+//                    Button(resumeButton.text.toString()) {
+//                        // 系统自动处理
+//                    }
+//                    .buttonStyle(.borderedProminent)
+//                    .tint(.green)
+//                    .frame(minWidth: 80, idealWidth: 80, maxWidth: 120, minHeight: 30, maxHeight: 36)
+//                }
+//                
+//            @unknown default:
+//                EmptyView()
+//            }
+//        }
+//    }
     
     // MARK: - 辅助方法
     private func getCurrentFireDate(state: AlarmPresentationState) -> ClosedRange<Date> {
@@ -234,7 +234,26 @@ extension LocalizedStringResource {
     }
 }
 
-// MARK: - ButtonView 组件（支持 AppIntent）
+struct AlarmControls: View {
+    var presentation: AlarmPresentation
+    var state: AlarmPresentationState
+    
+    var body: some View {
+        HStack(spacing: 4) {
+            switch state.mode {
+            case .countdown:
+                ButtonView(config: presentation.countdown?.pauseButton, intent: PauseIntent(alarmID: state.alarmID.uuidString), tint: .orange)
+            case .paused:
+                ButtonView(config: presentation.paused?.resumeButton, intent: ResumeIntent(alarmID: state.alarmID.uuidString), tint: .orange)
+            default:
+                EmptyView()
+            }
+
+            ButtonView(config: presentation.alert.stopButton, intent: StopIntent(alarmID: state.alarmID.uuidString), tint: .red)
+        }
+    }
+}
+
 struct ButtonView<I>: View where I: AppIntent {
     var config: AlarmButton
     var intent: I
@@ -251,11 +270,9 @@ struct ButtonView<I>: View where I: AppIntent {
         Button(intent: intent) {
             Label(config.text, systemImage: config.systemImageName)
                 .lineLimit(1)
-                .font(.subheadline)  // 稍微缩小字体
         }
         .tint(tint)
         .buttonStyle(.borderedProminent)
-        .frame(minWidth: 80, idealWidth: 80, maxWidth: 120, minHeight: 30, maxHeight: 36)  // 允许宽度自适应
+        .frame(width: 96, height: 30)
     }
 }
-
