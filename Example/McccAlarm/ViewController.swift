@@ -9,6 +9,15 @@
 import UIKit
 import McccAlarm
 
+
+/**
+ 1. 倒计时
+ 2. 重复
+ 3. 管理闹钟
+ 
+ */
+
+
 class ViewController: UIViewController {
     
     
@@ -23,7 +32,8 @@ class ViewController: UIViewController {
             alarm_test,
             alarm_authorization,
             alarm_manage,
-            alarm_countdowm
+            alarm_countdowm,
+            alarm_alarm
         ]
         
         
@@ -118,9 +128,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             didSelectSection2(atRow: indexPath.row)
         case 3:
             didSelectSection3(atRow: indexPath.row)
-//        case 4:
-//            locationManager.requestAlwaysAuthorization()
-//            didSelectSection4(atRow: indexPath.row)
+        case 4:
+            didSelectSection4(atRow: indexPath.row)
 //        case 5:
 //            didSelectSection5(atRow: indexPath.row)
 //        case 6:

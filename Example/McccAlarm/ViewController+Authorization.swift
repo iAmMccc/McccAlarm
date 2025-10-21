@@ -24,7 +24,7 @@ extension ViewController {
     
     
     func didSelectSection1(atRow row: Int) {
-
+        
         switch row {
         case 0:
             
@@ -48,3 +48,4 @@ extension ViewController {
         }
     }
 }
+

@@ -10,6 +10,7 @@ import UIKit
 import AlarmKit
 import SwiftUI
 import ActivityKit
+import McccAlarm
 
 
 extension ViewController {
@@ -29,6 +30,7 @@ extension ViewController {
         case 0:
             didSelectRow0()
         case 1:
+            didSelectRow1()
             break
             
         case 2:
@@ -54,7 +56,15 @@ extension ViewController {
         // 状态一：闹钟响起时的展示（Alert）
         // 创建停止按钮，当闹钟响起时显示，点击后停止闹钟
         let stopButton = AlarmButton(text: "结束", textColor: .white, systemImageName: "stop.circle")
-        let alert = AlarmPresentation.Alert(title: "你好闹钟", stopButton: stopButton)
+        let repeatButton = AlarmButton(text: "稍后提醒", textColor: .black, systemImageName: "repeat.circle")
+        
+        // ⭐ 添加 secondaryButton 和 secondaryButtonBehavior，可能有助于前台显示
+        let alert = AlarmPresentation.Alert(
+            title: "你好闹钟", 
+            stopButton: stopButton,
+            secondaryButton: repeatButton,           // 第二个按钮
+            secondaryButtonBehavior: .countdown      // 点击后重新倒计时
+        )
         
         // 状态二：倒计时过程中的展示（Countdown）
         // 创建暂停按钮，在倒计时过程中显示，点击后暂停倒计时
@@ -95,7 +105,7 @@ extension ViewController {
         // - preAlert: 5 秒，首次倒计时时长，从开始到第一次闹钟响起的时间
         // - postAlert: 5 秒，贪睡/重复倒计时时长，点击"重复"按钮后再次倒计时的时间间隔
         //   如果设置为 nil，则使用 preAlert 的值
-        let countDown = Alarm.CountdownDuration(preAlert: 500, postAlert: 5)
+        let countDown = Alarm.CountdownDuration(preAlert: 5, postAlert: 5)
         
         // MARK: - 4. 创建闹钟配置对象
         
@@ -121,6 +131,31 @@ extension ViewController {
             
             print("📋 当前活跃闹钟数量: \(alarms.count)")
             print("📋 所有闹钟: \(alarms)")
+        }
+    }
+}
+
+
+extension ViewController {
+    private func didSelectRow1() {
+        
+        let alert = AlarmPresentation.Alert(title: "倒计时闹钟", stopButton: .stopButton)
+        
+        let presentation = AlarmPresentation.init(alert: alert)
+        let attributes = AlarmAttributes(
+            presentation: presentation,
+            metadata: SimpleMetadata(),
+            tintColor: Color.red
+        )
+        
+        let config = AlarmManager.AlarmConfiguration.timer(duration: 5, attributes: attributes)
+        
+        
+        let id = UUID()
+        
+        Task {
+            let alarm = try await AlarmManager.shared.schedule(id: id, configuration: config)
+            print("alarm = \(alarm)")
         }
     }
 }
