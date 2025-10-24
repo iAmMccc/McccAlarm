@@ -53,8 +53,7 @@ struct McccAlarmActivity: Widget {
                 }
             } compactLeading: {
                 // 紧凑状态左侧 - 显示倒计时
-                countdown(state: context.state, maxWidth: 44)
-                    .foregroundStyle(context.attributes.tintColor)
+                countdown(state: context.state, attributes: context.attributes, maxWidth: 44)
             } compactTrailing: {
                 // 紧凑状态右侧 - 显示进度环
                 ProgressView(
@@ -90,53 +89,95 @@ struct McccAlarmActivity: Widget {
     // MARK: - 锁屏界面
     func lockScreenView(attributes: AlarmAttributes<McccAlarmMetadata>, state: AlarmPresentationState) -> some View {
         VStack(spacing: 16) {
-            // 标题
-            alarmTitle(attributes: attributes, state: state)
+            // 顶部：Title + Subtitle
+            HStack(spacing: 8) {
+                // Title
+                alarmTitle(attributes: attributes, state: state)
+                    .font(.title3)
+                    .foregroundStyle(attributes.tintColor)
+                    .fontWeight(.semibold)
+                    .layoutPriority(2)
+                
+                Spacer()
+
+                // Subtitle 居中对齐 Title
+                Text(attributes.metadata?.subTitle ?? "")
+                    .font(.body)
+                    .foregroundColor(.secondary)
+                    .layoutPriority(1)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+
             
-            // 倒计时和按钮
-            bottomView(attributes: attributes, state: state)
+            // 底部：倒计时 + 按钮
+            HStack(alignment: .center) {
+                // 左侧倒计时
+                countdown(state: state, attributes: attributes, maxWidth: 150)
+                
+                Spacer()
+                
+                AlarmControls(presentation: attributes.presentation, state: state, tintColor: attributes.tintColor)
+            }
         }
-        .padding(.all, 16)
+        .padding(EdgeInsets(top: 30, leading: 30, bottom: 20, trailing: 30))
+        .frame(height: 140) // 可根据需求调整整体高度
     }
+
     
     // MARK: - 底部视图
     func bottomView(attributes: AlarmAttributes<McccAlarmMetadata>, state: AlarmPresentationState) -> some View {
         HStack {
             // 倒计时
-            countdown(state: state, maxWidth: 150)
-                .font(.system(size: 40, design: .rounded))
+            countdown(state: state, attributes: attributes, maxWidth: 150)
             
             Spacer()
             
             // 控制按钮
-            AlarmControls(presentation: attributes.presentation, state: state)
+            AlarmControls(presentation: attributes.presentation, state: state, tintColor: attributes.tintColor)
         }
     }
     
     // MARK: - 倒计时显示
-    func countdown(state: AlarmPresentationState, maxWidth: CGFloat = .infinity) -> some View {
+    func countdown(state: AlarmPresentationState,
+                   attributes: AlarmAttributes<McccAlarmMetadata>,
+                   maxWidth: CGFloat = .infinity) -> some View {
         Group {
             switch state.mode {
-            case .alert:
-                // ⭐ Alert 状态：显示 "时间到" 或类似文本
-                Text("⏰")
-                    .font(.system(size: 40))
             case .countdown(let countdown):
                 Text(timerInterval: Date.now...countdown.fireDate, countsDown: true)
+                    .font(.system(size: 100, design: .rounded))
+                    .foregroundStyle(attributes.tintColor)
+                    .monospacedDigit()
+                
             case .paused(let pausedState):
                 let remaining = Duration.seconds(
                     pausedState.totalCountdownDuration - pausedState.previouslyElapsedDuration)
                 let pattern: Duration.TimeFormatStyle.Pattern =
                     remaining > .seconds(60 * 60) ? .hourMinuteSecond : .minuteSecond
                 Text(remaining.formatted(.time(pattern: pattern)))
-            @unknown default:
+                    .font(.system(size: 80, design: .rounded))
+                    .foregroundStyle(attributes.tintColor)
+                
+            default:
                 EmptyView()
             }
         }
-        .monospacedDigit()
         .lineLimit(1)
         .minimumScaleFactor(0.6)
         .frame(maxWidth: maxWidth, alignment: .leading)
+    }
+    
+    func countdownText(fireDate: Date) -> String {
+        let remaining = max(0, fireDate.timeIntervalSinceNow)
+        let hours = Int(remaining / 3600)
+        let minutes = Int((remaining.truncatingRemainder(dividingBy: 3600)) / 60)
+        let seconds = Int(remaining) % 60
+
+        if hours > 0 {
+            return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+        } else {
+            return String(format: "%02d:%02d", minutes, seconds)
+        }
     }
     
     // MARK: - 标题
@@ -170,56 +211,5 @@ struct McccAlarmActivity: Widget {
         default:
             return Date.now...Date.now
         }
-    }
-}
-
-struct AlarmControls: View {
-    var presentation: AlarmPresentation
-    var state: AlarmPresentationState
-    
-    var body: some View {
-        HStack(spacing: 4) {
-            switch state.mode {
-            case .countdown:
-                ButtonView(config: presentation.countdown?.pauseButton, intent: PauseIntent(alarmID: state.alarmID.uuidString), tint: .orange)
-            case .paused:
-                ButtonView(config: presentation.paused?.resumeButton, intent: ResumeIntent(alarmID: state.alarmID.uuidString), tint: .orange)
-            default:
-                EmptyView()
-            }
-
-            ButtonView(config: presentation.alert.stopButton, intent: StopIntent(alarmID: state.alarmID.uuidString), tint: .red)
-        } .onAppear {
-            print("AlarmControls 显示了，当前的Id为：\(state.alarmID.uuidString)")
-        }
-        .onChange(of: state.mode) { newMode in
-            print("Alarm状态改变，当前的Id为：\(state.alarmID.uuidString)，模式：\(newMode)")
-        }
-    }
-}
-
-
-
-
-struct ButtonView<I>: View where I: AppIntent {
-    var config: AlarmButton
-    var intent: I
-    var tint: Color
-    
-    init?(config: AlarmButton?, intent: I, tint: Color) {
-        guard let config else { return nil }
-        self.config = config
-        self.intent = intent
-        self.tint = tint
-    }
-    
-    var body: some View {
-        Button(intent: intent) {
-            Label(config.text, systemImage: config.systemImageName)
-                .lineLimit(1)
-        }
-        .tint(tint)
-        .buttonStyle(.borderedProminent)
-        .frame(width: 96, height: 30)
     }
 }

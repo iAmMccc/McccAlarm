@@ -46,7 +46,7 @@ extension ViewController {
 
             
             let config = AlarmManager.AlarmConfiguration.init(
-                countdownDuration: .init(preAlert: 8, postAlert: 10),
+                countdownDuration: .init(preAlert: 15, postAlert: 10),
                 schedule: Alarm.Schedule.fixed(.now.addingTimeInterval(3)),
                 attributes: attributes,
                 stopIntent: StopIntent(alarmID: id.uuidString),

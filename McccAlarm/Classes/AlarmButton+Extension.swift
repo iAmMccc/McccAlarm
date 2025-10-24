@@ -15,23 +15,23 @@ extension AlarmButton {
     }
     
     public static var pauseButton: Self {
-        AlarmButton(text: "暂停", textColor: .black, systemImageName: "pause.circle")
+        AlarmButton(text: "暂停", textColor: .black, systemImageName: "pause.fill")
     }
     
     public static var resumeButton: Self {
-        AlarmButton(text: "开始", textColor: .black, systemImageName: "play.circle")
+        AlarmButton(text: "开始", textColor: .black, systemImageName: "play.fill")
     }
     
     public static var repeatButton: Self {
-        AlarmButton(text: "重复", textColor: .black, systemImageName: "repeat.circle")
+        AlarmButton(text: "重复", textColor: .black, systemImageName: "arrow.clockwise")
+    }
+
+    public static var sleepButton: Self {
+        AlarmButton(text: "小憩", textColor: .black, systemImageName: "zzz")
     }
     
     public static var stopButton: Self {
-        AlarmButton(text: "停止", textColor: .white, systemImageName: "stop.circle")
-    }
-    
-    public static var sleepButton: Self {
-        AlarmButton(text: "小憩", textColor: .black, systemImageName: "zzz")
+        AlarmButton(text: "停止", textColor: .white, systemImageName: "xmark")
     }
 }
 

@@ -111,7 +111,7 @@ struct McccAlarmActivity_EmptyMetadata: Widget {
             Spacer()
             
             // 控制按钮
-            AlarmControls(presentation: attributes.presentation, state: state)
+            AlarmControls(presentation: attributes.presentation, state: state, tintColor: attributes.tintColor)
         }
     }
     

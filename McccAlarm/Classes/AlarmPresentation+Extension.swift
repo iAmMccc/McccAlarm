@@ -31,6 +31,6 @@ public extension AlarmPresentation.Countdown {
 
 public extension AlarmPresentation.Paused {
     static func paused(title: LocalizedStringResource) -> AlarmPresentation.Paused {
-        return AlarmPresentation.Paused(title: title, resumeButton: .repeatButton)
+        return AlarmPresentation.Paused(title: title, resumeButton: .resumeButton)
     }
 }
