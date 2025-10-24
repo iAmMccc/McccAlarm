@@ -7,10 +7,11 @@
 
 import Foundation
 import AlarmKit
+import SwiftUI
 
 extension AlarmButton {
     public static var openAppButton: Self {
-        AlarmButton(text: "打开App", textColor: .black, systemImageName: "app")
+        AlarmButton(text: "打开App", textColor: .black, systemImageName: "app.badge")
     }
     
     public static var pauseButton: Self {
@@ -26,6 +27,6 @@ extension AlarmButton {
     }
     
     public static var stopButton: Self {
-        AlarmButton(text: "停止", textColor: .white, systemImageName: "stop.circle")
+        AlarmButton(text: "停止", textColor: .black, systemImageName: "stop.circle")
     }
 }

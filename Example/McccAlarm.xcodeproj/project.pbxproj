@@ -15,6 +15,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		994DE5A22EAB1A0600525A90 /* ViewController+fixedSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DE5A12EAB1A0600525A90 /* ViewController+fixedSchedule.swift */; };
+		994DE5B82EAB285700525A90 /* ViewController+McccAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DE5B72EAB285700525A90 /* ViewController+McccAlarm.swift */; };
 		999A30222EA10E95002C18FD /* ViewController+Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A301D2EA10E95002C18FD /* ViewController+Countdown.swift */; };
 		999A30232EA10E95002C18FD /* ViewController+Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A301F2EA10E95002C18FD /* ViewController+Authorization.swift */; };
 		999A30242EA10E95002C18FD /* ViewController+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A301E2EA10E95002C18FD /* ViewController+Test.swift */; };
@@ -76,6 +77,7 @@
 		81ACF19CD1305242E2E44A64 /* Pods-McccAlarm_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McccAlarm_Example.release.xcconfig"; path = "Target Support Files/Pods-McccAlarm_Example/Pods-McccAlarm_Example.release.xcconfig"; sourceTree = "<group>"; };
 		81D9C93D4F884B611193711C /* Pods-McccAlarmActivityExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McccAlarmActivityExtension.debug.xcconfig"; path = "Target Support Files/Pods-McccAlarmActivityExtension/Pods-McccAlarmActivityExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		994DE5A12EAB1A0600525A90 /* ViewController+fixedSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+fixedSchedule.swift"; sourceTree = "<group>"; };
+		994DE5B72EAB285700525A90 /* ViewController+McccAlarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+McccAlarm.swift"; sourceTree = "<group>"; };
 		999A301C2EA10E95002C18FD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		999A301D2EA10E95002C18FD /* ViewController+Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Countdown.swift"; sourceTree = "<group>"; };
 		999A301E2EA10E95002C18FD /* ViewController+Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Test.swift"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				999A31EE2EA5D77E002C18FD /* ViewController+Schedule.swift */,
 				999A30EE2EA232A7002C18FD /* ViewController+Manage.swift */,
 				999A301D2EA10E95002C18FD /* ViewController+Countdown.swift */,
+				994DE5B72EAB285700525A90 /* ViewController+McccAlarm.swift */,
 				999A301E2EA10E95002C18FD /* ViewController+Test.swift */,
 				999A301F2EA10E95002C18FD /* ViewController+Authorization.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -497,6 +500,7 @@
 				999A30EF2EA232A7002C18FD /* ViewController+Manage.swift in Sources */,
 				999A30232EA10E95002C18FD /* ViewController+Authorization.swift in Sources */,
 				994DE5A22EAB1A0600525A90 /* ViewController+fixedSchedule.swift in Sources */,
+				994DE5B82EAB285700525A90 /* ViewController+McccAlarm.swift in Sources */,
 				999A30242EA10E95002C18FD /* ViewController+Test.swift in Sources */,
 				999A30252EA10E95002C18FD /* ViewController.swift in Sources */,
 				999A30292EA10FC6002C18FD /* UITableView+Reusable.swift in Sources */,

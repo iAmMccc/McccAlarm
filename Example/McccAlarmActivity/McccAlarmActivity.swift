@@ -17,10 +17,12 @@ struct McccAlarmActivity: Widget {
     
     /// body属性 - Widget的核心配置
     var body: some WidgetConfiguration {
+        
         /// 配置 Live Activity
         ///  - 配置锁屏页面的UI
         ///  - 配置灵动岛界面的UI
         ActivityConfiguration(for: AlarmAttributes<McccEmptyMetadata>.self) { context in
+            
             /// 设置锁屏界面的UI
             ///  - context.attributes：闹钟的静态属性（标题、颜色、元数据等）
             ///  - context.state：闹钟的动态状态（倒计时进度、是否暂停等）
