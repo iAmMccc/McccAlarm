@@ -10,12 +10,12 @@ import AlarmKit
 
 
 public extension AlarmPresentation.Alert {
-    static func alert(title: LocalizedStringResource) -> AlarmPresentation.Alert {
+    static func alert(title: LocalizedStringResource, needRepeat: Bool = true) -> AlarmPresentation.Alert {
         return AlarmPresentation.Alert(
             title: title,
             stopButton: .stopButton,
-            secondaryButton: .repeatButton,
-            secondaryButtonBehavior: .countdown
+            secondaryButton: needRepeat ? .repeatButton : nil,
+            secondaryButtonBehavior: needRepeat ? .countdown : nil
         )
     }
 }

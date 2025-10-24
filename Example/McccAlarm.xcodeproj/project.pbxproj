@@ -16,6 +16,8 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		994DE5A22EAB1A0600525A90 /* ViewController+fixedSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DE5A12EAB1A0600525A90 /* ViewController+fixedSchedule.swift */; };
 		994DE5B82EAB285700525A90 /* ViewController+McccAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DE5B72EAB285700525A90 /* ViewController+McccAlarm.swift */; };
+		9955B9EF2EAB882A001623A8 /* AppIntentsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955B9EE2EAB882A001623A8 /* AppIntentsTest.swift */; };
+		9955BA082EAB884D001623A8 /* AppIntentsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955B9EE2EAB882A001623A8 /* AppIntentsTest.swift */; };
 		999A30222EA10E95002C18FD /* ViewController+Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A301D2EA10E95002C18FD /* ViewController+Countdown.swift */; };
 		999A30232EA10E95002C18FD /* ViewController+Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A301F2EA10E95002C18FD /* ViewController+Authorization.swift */; };
 		999A30242EA10E95002C18FD /* ViewController+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A301E2EA10E95002C18FD /* ViewController+Test.swift */; };
@@ -78,6 +80,7 @@
 		81D9C93D4F884B611193711C /* Pods-McccAlarmActivityExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McccAlarmActivityExtension.debug.xcconfig"; path = "Target Support Files/Pods-McccAlarmActivityExtension/Pods-McccAlarmActivityExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		994DE5A12EAB1A0600525A90 /* ViewController+fixedSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+fixedSchedule.swift"; sourceTree = "<group>"; };
 		994DE5B72EAB285700525A90 /* ViewController+McccAlarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+McccAlarm.swift"; sourceTree = "<group>"; };
+		9955B9EE2EAB882A001623A8 /* AppIntentsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntentsTest.swift; sourceTree = "<group>"; };
 		999A301C2EA10E95002C18FD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		999A301D2EA10E95002C18FD /* ViewController+Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Countdown.swift"; sourceTree = "<group>"; };
 		999A301E2EA10E95002C18FD /* ViewController+Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Test.swift"; sourceTree = "<group>"; };
@@ -201,6 +204,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				9955B9EE2EAB882A001623A8 /* AppIntentsTest.swift */,
 			);
 			name = "Example for McccAlarm";
 			path = McccAlarm;
@@ -497,6 +501,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				999A30222EA10E95002C18FD /* ViewController+Countdown.swift in Sources */,
+				9955B9EF2EAB882A001623A8 /* AppIntentsTest.swift in Sources */,
 				999A30EF2EA232A7002C18FD /* ViewController+Manage.swift in Sources */,
 				999A30232EA10E95002C18FD /* ViewController+Authorization.swift in Sources */,
 				994DE5A22EAB1A0600525A90 /* ViewController+fixedSchedule.swift in Sources */,
@@ -522,6 +527,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9955BA082EAB884D001623A8 /* AppIntentsTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

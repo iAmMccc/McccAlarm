@@ -10,6 +10,7 @@ import Foundation
 import McccAlarm
 import AlarmKit
 import SwiftUI
+import ActivityKit
 
 
 
@@ -31,26 +32,29 @@ extension ViewController {
 
             
             let presentation = AlarmPresentation(
-                alert: .alert(title: "响铃时标题"),
+                alert: .alert(title: "响铃时标题111"),
                 countdown: .countDown(title: "倒计时标题"),
                 paused: .paused(title: "暂停时标题")
             )
             
             let attributes = AlarmAttributes(
                 presentation: presentation,
-                metadata: McccEmptyMetadata(),
+                metadata: McccAlarmMetadata(title: "倒计时闹钟1", subTitle: "快起床了"),
                 tintColor: Color.green
             )
-            
+            let id = UUID()
+
             
             let config = AlarmManager.AlarmConfiguration.init(
-                countdownDuration: .init(preAlert: 56, postAlert: 10),
-                schedule: Alarm.Schedule.fixed(.now.addingTimeInterval(5)),
-                attributes: attributes
+                countdownDuration: .init(preAlert: 8, postAlert: 10),
+                schedule: Alarm.Schedule.fixed(.now.addingTimeInterval(3)),
+                attributes: attributes,
+                stopIntent: StopIntent(alarmID: id.uuidString),
+                secondaryIntent: RepeatIntent(alarmID: id.uuidString),
+                sound: AlertConfiguration.AlertSound.named("")
             )
             
             
-            let id = UUID()
             
             Task {
                 let alarm = try await AlarmManager.shared.schedule(id: id, configuration: config)

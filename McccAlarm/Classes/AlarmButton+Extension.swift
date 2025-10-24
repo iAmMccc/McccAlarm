@@ -27,7 +27,7 @@ extension AlarmButton {
     }
     
     public static var stopButton: Self {
-        AlarmButton(text: "停止", textColor: .black, systemImageName: "stop.circle")
+        AlarmButton(text: "停止", textColor: .white, systemImageName: "stop.circle")
     }
     
     public static var sleepButton: Self {
