@@ -9,7 +9,7 @@
 import Foundation
 import AlarmKit
 import SwiftUI
-
+import McccAlarm
 
 extension ViewController {
     var alarm_test: [String: Any] {
@@ -23,7 +23,9 @@ extension ViewController {
     
     
     func didSelectSection0(atRow row: Int) {
-        
+        let vc = McccSystemAlarmViewController(title: "闹钟所发生的水电费水电费SSD收费水电费手段", time: Date.now, alarmId: "123")
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false)
     }
     
 }

@@ -1,10 +1,12 @@
 //
-//  McccAlarmWidget.swift
-//  McccAlarmWidget
+//  McccAlarmActivity_emptyMetadata.swift
+//  McccAlarm_Example
 //
-//  简单的 AlarmKit Live Activity 实现
+//  Created by qixin on 2025/10/24.
+//  Copyright © 2025 CocoaPods. All rights reserved.
 //
 
+import Foundation
 import ActivityKit
 import AlarmKit
 import SwiftUI
@@ -12,7 +14,7 @@ import WidgetKit
 import AppIntents
 import McccAlarm
 
-struct McccAlarmActivity: Widget {
+struct McccAlarmActivity_EmptyMetadata: Widget {
     
     
     /// body属性 - Widget的核心配置
@@ -21,7 +23,7 @@ struct McccAlarmActivity: Widget {
         /// 配置 Live Activity
         ///  - 配置锁屏页面的UI
         ///  - 配置灵动岛界面的UI
-        ActivityConfiguration(for: AlarmAttributes<McccAlarmMetadata>.self) { context in
+        ActivityConfiguration(for: AlarmAttributes<McccEmptyMetadata>.self) { context in
             
             /// 设置锁屏界面的UI
             ///  - context.attributes：闹钟的静态属性（标题、颜色、元数据等）
@@ -88,7 +90,7 @@ struct McccAlarmActivity: Widget {
     }
     
     // MARK: - 锁屏界面
-    func lockScreenView(attributes: AlarmAttributes<McccAlarmMetadata>, state: AlarmPresentationState) -> some View {
+    func lockScreenView(attributes: AlarmAttributes<McccEmptyMetadata>, state: AlarmPresentationState) -> some View {
         VStack(spacing: 16) {
             // 标题
             alarmTitle(attributes: attributes, state: state)
@@ -100,7 +102,7 @@ struct McccAlarmActivity: Widget {
     }
     
     // MARK: - 底部视图
-    func bottomView(attributes: AlarmAttributes<McccAlarmMetadata>, state: AlarmPresentationState) -> some View {
+    func bottomView(attributes: AlarmAttributes<McccEmptyMetadata>, state: AlarmPresentationState) -> some View {
         HStack {
             // 倒计时
             countdown(state: state, maxWidth: 150)
@@ -141,7 +143,7 @@ struct McccAlarmActivity: Widget {
     
     // MARK: - 标题
     @ViewBuilder func alarmTitle(
-        attributes: AlarmAttributes<McccAlarmMetadata>,
+        attributes: AlarmAttributes<McccEmptyMetadata>,
         state: AlarmPresentationState
     ) -> some View {
         let title: LocalizedStringResource? =
@@ -172,4 +174,5 @@ struct McccAlarmActivity: Widget {
         }
     }
 }
+
 
