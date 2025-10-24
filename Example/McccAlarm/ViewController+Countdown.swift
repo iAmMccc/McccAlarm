@@ -18,9 +18,8 @@ extension ViewController {
         [
             "title": "倒计时",
             "list": [
-                ["name": "设置一个倒计时"],
-                ["name": "方法2: 使用绝对时间 Time (测试)"],
-                ["name": "方法3: 反转 preAlert/postAlert 参数"],
+                ["name": "使用CountDown实现倒计时"],
+                ["name": "使用Time实现倒计时"],
             ]
         ]
     }
@@ -31,14 +30,7 @@ extension ViewController {
             didSelectRow0()
         case 1:
             didSelectRow1()
-            break
-            
-        case 2:
-            break
-            
-        case 3:
-            break
-            
+
         default:
             break
         }
@@ -95,7 +87,7 @@ extension ViewController {
         // - tintColor: 主题色（绿色），用于按钮、进度条等 UI 元素的颜色
         let attributes = AlarmAttributes(
             presentation: presentation,
-            metadata: SimpleMetadata(),
+            metadata: McccEmptyMetadata(),
             tintColor: Color.green
         )
         
@@ -157,7 +149,7 @@ extension ViewController {
         
         let attributes = AlarmAttributes(
             presentation: presentation,
-            metadata: SimpleMetadata(),
+            metadata: McccEmptyMetadata(),
             tintColor: Color.red
         )
         

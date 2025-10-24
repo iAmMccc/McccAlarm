@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		1EE640ADAD45907BC5D0FB8D /* Pods_McccAlarm_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B8BD7AE295C44699881308 /* Pods_McccAlarm_Example.framework */; };
+		1FF53D2285DD7BD40527735C /* Pods_McccAlarmActivityExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF256116F3702D67F0130AFC /* Pods_McccAlarmActivityExtension.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		994DE5A22EAB1A0600525A90 /* ViewController+fixedSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994DE5A12EAB1A0600525A90 /* ViewController+fixedSchedule.swift */; };
 		999A30222EA10E95002C18FD /* ViewController+Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A301D2EA10E95002C18FD /* ViewController+Countdown.swift */; };
 		999A30232EA10E95002C18FD /* ViewController+Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A301F2EA10E95002C18FD /* ViewController+Authorization.swift */; };
 		999A30242EA10E95002C18FD /* ViewController+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A301E2EA10E95002C18FD /* ViewController+Test.swift */; };
@@ -22,12 +24,8 @@
 		999A30CD2EA22BD8002C18FD /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999A30CC2EA22BD8002C18FD /* WidgetKit.framework */; };
 		999A30CF2EA22BD8002C18FD /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 999A30CE2EA22BD8002C18FD /* SwiftUI.framework */; };
 		999A30E02EA22BDA002C18FD /* McccAlarmActivityExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 999A30CB2EA22BD8002C18FD /* McccAlarmActivityExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		999A30EC2EA22D17002C18FD /* SimpleMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A30EB2EA22D17002C18FD /* SimpleMetadata.swift */; };
-		999A30ED2EA22D2E002C18FD /* SimpleMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A30EB2EA22D17002C18FD /* SimpleMetadata.swift */; };
 		999A30EF2EA232A7002C18FD /* ViewController+Manage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A30EE2EA232A7002C18FD /* ViewController+Manage.swift */; };
-		999A317B2EA25E6A002C18FD /* AppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A317A2EA25E6A002C18FD /* AppIntents.swift */; };
-		999A317C2EA25E6A002C18FD /* AppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A317A2EA25E6A002C18FD /* AppIntents.swift */; };
-		999A31EF2EA5D77E002C18FD /* ViewController+Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A31EE2EA5D77E002C18FD /* ViewController+Alarm.swift */; };
+		999A31EF2EA5D77E002C18FD /* ViewController+Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999A31EE2EA5D77E002C18FD /* ViewController+Schedule.swift */; };
 		C7F24A473079D8E226503C73 /* Pods_McccAlarm_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B96DFAFA16A39896D26556D6 /* Pods_McccAlarm_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +74,8 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		81ACF19CD1305242E2E44A64 /* Pods-McccAlarm_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McccAlarm_Example.release.xcconfig"; path = "Target Support Files/Pods-McccAlarm_Example/Pods-McccAlarm_Example.release.xcconfig"; sourceTree = "<group>"; };
+		81D9C93D4F884B611193711C /* Pods-McccAlarmActivityExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McccAlarmActivityExtension.debug.xcconfig"; path = "Target Support Files/Pods-McccAlarmActivityExtension/Pods-McccAlarmActivityExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		994DE5A12EAB1A0600525A90 /* ViewController+fixedSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+fixedSchedule.swift"; sourceTree = "<group>"; };
 		999A301C2EA10E95002C18FD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		999A301D2EA10E95002C18FD /* ViewController+Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Countdown.swift"; sourceTree = "<group>"; };
 		999A301E2EA10E95002C18FD /* ViewController+Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Test.swift"; sourceTree = "<group>"; };
@@ -85,15 +85,15 @@
 		999A30CB2EA22BD8002C18FD /* McccAlarmActivityExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = McccAlarmActivityExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		999A30CC2EA22BD8002C18FD /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		999A30CE2EA22BD8002C18FD /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		999A30EB2EA22D17002C18FD /* SimpleMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMetadata.swift; sourceTree = "<group>"; };
 		999A30EE2EA232A7002C18FD /* ViewController+Manage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Manage.swift"; sourceTree = "<group>"; };
-		999A317A2EA25E6A002C18FD /* AppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntents.swift; sourceTree = "<group>"; };
-		999A31EE2EA5D77E002C18FD /* ViewController+Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Alarm.swift"; sourceTree = "<group>"; };
+		999A31EE2EA5D77E002C18FD /* ViewController+Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Schedule.swift"; sourceTree = "<group>"; };
+		9FEC55C946E25DEF0D2BC3E1 /* Pods-McccAlarmActivityExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McccAlarmActivityExtension.release.xcconfig"; path = "Target Support Files/Pods-McccAlarmActivityExtension/Pods-McccAlarmActivityExtension.release.xcconfig"; sourceTree = "<group>"; };
 		A1B8BD7AE295C44699881308 /* Pods_McccAlarm_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McccAlarm_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B96DFAFA16A39896D26556D6 /* Pods_McccAlarm_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McccAlarm_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8C81DC6EE89805DC45DA0C7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		CC7323A3D67BF0BEB934920B /* McccAlarm.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = McccAlarm.podspec; path = ../McccAlarm.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D174FD391BF7CA30B1DB294C /* Pods-McccAlarm_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-McccAlarm_Tests.release.xcconfig"; path = "Target Support Files/Pods-McccAlarm_Tests/Pods-McccAlarm_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		FF256116F3702D67F0130AFC /* Pods_McccAlarmActivityExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_McccAlarmActivityExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -140,6 +140,7 @@
 			files = (
 				999A30CF2EA22BD8002C18FD /* SwiftUI.framework in Frameworks */,
 				999A30CD2EA22BD8002C18FD /* WidgetKit.framework in Frameworks */,
+				1FF53D2285DD7BD40527735C /* Pods_McccAlarmActivityExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +154,7 @@
 				B96DFAFA16A39896D26556D6 /* Pods_McccAlarm_Tests.framework */,
 				999A30CC2EA22BD8002C18FD /* WidgetKit.framework */,
 				999A30CE2EA22BD8002C18FD /* SwiftUI.framework */,
+				FF256116F3702D67F0130AFC /* Pods_McccAlarmActivityExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -183,10 +185,10 @@
 		607FACD21AFB9204008FA782 /* Example for McccAlarm */ = {
 			isa = PBXGroup;
 			children = (
-				999A30EA2EA22D06002C18FD /* Shared */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				999A301C2EA10E95002C18FD /* ViewController.swift */,
-				999A31EE2EA5D77E002C18FD /* ViewController+Alarm.swift */,
+				994DE5A12EAB1A0600525A90 /* ViewController+fixedSchedule.swift */,
+				999A31EE2EA5D77E002C18FD /* ViewController+Schedule.swift */,
 				999A30EE2EA232A7002C18FD /* ViewController+Manage.swift */,
 				999A301D2EA10E95002C18FD /* ViewController+Countdown.swift */,
 				999A301E2EA10E95002C18FD /* ViewController+Test.swift */,
@@ -245,15 +247,6 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
-		999A30EA2EA22D06002C18FD /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				999A317A2EA25E6A002C18FD /* AppIntents.swift */,
-				999A30EB2EA22D17002C18FD /* SimpleMetadata.swift */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
 		A7B726193A58DE69AF83DB8D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +254,8 @@
 				81ACF19CD1305242E2E44A64 /* Pods-McccAlarm_Example.release.xcconfig */,
 				00D7D7045A958197C74EF144 /* Pods-McccAlarm_Tests.debug.xcconfig */,
 				D174FD391BF7CA30B1DB294C /* Pods-McccAlarm_Tests.release.xcconfig */,
+				81D9C93D4F884B611193711C /* Pods-McccAlarmActivityExtension.debug.xcconfig */,
+				9FEC55C946E25DEF0D2BC3E1 /* Pods-McccAlarmActivityExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -312,6 +307,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 999A30E52EA22BDA002C18FD /* Build configuration list for PBXNativeTarget "McccAlarmActivityExtension" */;
 			buildPhases = (
+				CE923F962BC1042584E4D88C /* [CP] Check Pods Manifest.lock */,
 				999A30C72EA22BD8002C18FD /* Sources */,
 				999A30C82EA22BD8002C18FD /* Frameworks */,
 				999A30C92EA22BD8002C18FD /* Resources */,
@@ -411,9 +407,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-McccAlarm_Example/Pods-McccAlarm_Example-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-McccAlarm_Example/Pods-McccAlarm_Example-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -464,6 +464,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CE923F962BC1042584E4D88C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-McccAlarmActivityExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -472,16 +494,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				999A30222EA10E95002C18FD /* ViewController+Countdown.swift in Sources */,
-				999A317C2EA25E6A002C18FD /* AppIntents.swift in Sources */,
 				999A30EF2EA232A7002C18FD /* ViewController+Manage.swift in Sources */,
 				999A30232EA10E95002C18FD /* ViewController+Authorization.swift in Sources */,
-				999A30EC2EA22D17002C18FD /* SimpleMetadata.swift in Sources */,
+				994DE5A22EAB1A0600525A90 /* ViewController+fixedSchedule.swift in Sources */,
 				999A30242EA10E95002C18FD /* ViewController+Test.swift in Sources */,
 				999A30252EA10E95002C18FD /* ViewController.swift in Sources */,
 				999A30292EA10FC6002C18FD /* UITableView+Reusable.swift in Sources */,
 				999A302A2EA10FC6002C18FD /* ArraySafe.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				999A31EF2EA5D77E002C18FD /* ViewController+Alarm.swift in Sources */,
+				999A31EF2EA5D77E002C18FD /* ViewController+Schedule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,8 +518,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				999A317B2EA25E6A002C18FD /* AppIntents.swift in Sources */,
-				999A30ED2EA22D2E002C18FD /* SimpleMetadata.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,7 +672,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -673,7 +692,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -731,6 +750,7 @@
 		};
 		999A30E22EA22BDA002C18FD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81D9C93D4F884B611193711C /* Pods-McccAlarmActivityExtension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -779,6 +799,7 @@
 		};
 		999A30E32EA22BDA002C18FD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FEC55C946E25DEF0D2BC3E1 /* Pods-McccAlarmActivityExtension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

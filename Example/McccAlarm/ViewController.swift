@@ -35,7 +35,8 @@ class ViewController: UIViewController {
             alarm_authorization,
             alarm_manage,
             alarm_countdowm,
-            alarm_alarm
+            alarm_schedule,
+            alarm_fixedSchedule
         ]
         
         
@@ -174,8 +175,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             didSelectSection3(atRow: indexPath.row)
         case 4:
             didSelectSection4(atRow: indexPath.row)
-//        case 5:
-//            didSelectSection5(atRow: indexPath.row)
+        case 5:
+            didSelectSection5(atRow: indexPath.row)
 //        case 6:
 //            didSelectSection6(atRow: indexPath.row)
 //        case 7:

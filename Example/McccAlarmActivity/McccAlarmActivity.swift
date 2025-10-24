@@ -10,6 +10,7 @@ import AlarmKit
 import SwiftUI
 import WidgetKit
 import AppIntents
+import McccAlarm
 
 struct McccAlarmActivity: Widget {
     
@@ -19,7 +20,7 @@ struct McccAlarmActivity: Widget {
         /// 配置 Live Activity
         ///  - 配置锁屏页面的UI
         ///  - 配置灵动岛界面的UI
-        ActivityConfiguration(for: AlarmAttributes<SimpleMetadata>.self) { context in
+        ActivityConfiguration(for: AlarmAttributes<McccEmptyMetadata>.self) { context in
             /// 设置锁屏界面的UI
             ///  - context.attributes：闹钟的静态属性（标题、颜色、元数据等）
             ///  - context.state：闹钟的动态状态（倒计时进度、是否暂停等）
@@ -85,7 +86,7 @@ struct McccAlarmActivity: Widget {
     }
     
     // MARK: - 锁屏界面
-    func lockScreenView(attributes: AlarmAttributes<SimpleMetadata>, state: AlarmPresentationState) -> some View {
+    func lockScreenView(attributes: AlarmAttributes<McccEmptyMetadata>, state: AlarmPresentationState) -> some View {
         VStack(spacing: 16) {
             // 标题
             alarmTitle(attributes: attributes, state: state)
@@ -97,7 +98,7 @@ struct McccAlarmActivity: Widget {
     }
     
     // MARK: - 底部视图
-    func bottomView(attributes: AlarmAttributes<SimpleMetadata>, state: AlarmPresentationState) -> some View {
+    func bottomView(attributes: AlarmAttributes<McccEmptyMetadata>, state: AlarmPresentationState) -> some View {
         HStack {
             // 倒计时
             countdown(state: state, maxWidth: 150)
@@ -138,7 +139,7 @@ struct McccAlarmActivity: Widget {
     
     // MARK: - 标题
     @ViewBuilder func alarmTitle(
-        attributes: AlarmAttributes<SimpleMetadata>, 
+        attributes: AlarmAttributes<McccEmptyMetadata>, 
         state: AlarmPresentationState
     ) -> some View {
         let title: LocalizedStringResource? =
@@ -158,64 +159,7 @@ struct McccAlarmActivity: Widget {
             .fontWeight(.semibold)
             .lineLimit(1)
     }
-//    
-//    // MARK: - 控制按钮
-//    @ViewBuilder func alarmControls(
-//        presentation: AlarmPresentation, 
-//        state: AlarmPresentationState
-//    ) -> some View {
-//        HStack(spacing: 8) {
-//            switch state.mode {
-//            case .alert:
-//                // ⭐ Alert 状态：显示停止按钮和第二按钮
-//                // 停止按钮
-//                let stopButton = presentation.alert.stopButton 
-//                    Button(stopButton.text.toString()) {
-//                        // 系统自动处理
-//                    }
-//                    .buttonStyle(.borderedProminent)
-//                    .tint(.red)
-//                    .frame(minWidth: 80, idealWidth: 90, maxWidth: 120, minHeight: 32, maxHeight: 36)
-//                
-//                
-//                // 第二按钮（重复/稍后提醒）
-//                if let secondaryButton = presentation.alert.secondaryButton {
-//                    Button(secondaryButton.text.toString()) {
-//                        // 系统自动处理
-//                    }
-//                    .buttonStyle(.bordered)
-//                    .tint(.blue)
-//                    .frame(minWidth: 80, idealWidth: 90, maxWidth: 120, minHeight: 32, maxHeight: 36)
-//                }
-//                
-//            case .countdown:
-//                // 暂停按钮
-//                if let pauseButton = presentation.countdown?.pauseButton {
-//                    Button(pauseButton.text.toString()) {
-//                        // 系统自动处理
-//                    }
-//                    .buttonStyle(.borderedProminent)
-//                    .tint(.orange)
-//                    .frame(minWidth: 80, idealWidth: 80, maxWidth: 120, minHeight: 30, maxHeight: 36)
-//                }
-//                
-//            case .paused:
-//                // 恢复按钮
-//                if let resumeButton = presentation.paused?.resumeButton {
-//                    Button(resumeButton.text.toString()) {
-//                        // 系统自动处理
-//                    }
-//                    .buttonStyle(.borderedProminent)
-//                    .tint(.green)
-//                    .frame(minWidth: 80, idealWidth: 80, maxWidth: 120, minHeight: 30, maxHeight: 36)
-//                }
-//                
-//            @unknown default:
-//                EmptyView()
-//            }
-//        }
-//    }
-    
+
     // MARK: - 辅助方法
     private func getCurrentFireDate(state: AlarmPresentationState) -> ClosedRange<Date> {
         switch state.mode {

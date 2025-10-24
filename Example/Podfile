@@ -11,3 +11,8 @@ target 'McccAlarm_Example' do
     
   end
 end
+
+
+target 'McccAlarmActivityExtension' do
+  pod 'McccAlarm', :path => '../'
+end
