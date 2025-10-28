@@ -82,7 +82,6 @@ extension McccAlarmActivity {
         }
         .padding(EdgeInsets(top: 30, leading: 30, bottom: 20, trailing: 30))
         .frame(height: 140) // 可根据需求调整整体高度
-        .foregroundStyle(.red)
     }
 }
 
@@ -143,9 +142,17 @@ extension McccAlarmActivity {
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                 
-            case .alert:
-                alarmTitle(attributes: attributes, state: state, fontSize: 26)
+            case .alert(let alert):
+                let formattedTime = String(format: "%02d:%02d", alert.time.hour, alert.time.minute)
+                Text(formattedTime)
+                    .font(.system(size: fontSize, design: .rounded))
+                    .monospacedDigit()
+                    .foregroundStyle(attributes.tintColor)
+                    .frame(maxWidth: maxWidth, alignment: alignment)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.6)
 
+                
                 
             @unknown default:
                 // 保底分支，避免返回 Void

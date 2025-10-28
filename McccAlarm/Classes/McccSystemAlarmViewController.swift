@@ -8,6 +8,7 @@
 import UIKit
 import AVFoundation
 import AudioToolbox
+import AlarmKit
 
 // MARK: - 协议定义
 public protocol McccSystemAlarmViewControllerDelegate: AnyObject {
@@ -138,7 +139,7 @@ public class McccSystemAlarmViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         timeLabel.text = formatter.string(from: time)
-        timeLabel.font = .systemFont(ofSize: 150, weight: .semibold)
+        timeLabel.font = .systemFont(ofSize: 140, weight: .semibold)
         timeLabel.textColor = .white
         timeLabel.textAlignment = .center
         timeLabel.alpha = 0.7
@@ -204,12 +205,25 @@ public class McccSystemAlarmViewController: UIViewController {
     // MARK: - 按钮行为
     @objc private func didTapRepeat() {
         stopFeedback()
+        
+        if let uuid = UUID(uuidString: alarmId) {
+            try? AlarmManager.shared.countdown(id: uuid)
+        } else {
+            print("异常的alarmID = \(alarmId)")
+        }
+        
         dismiss(animated: true)
+        
         delegate?.alarmViewControllerDidTapRepeat(self, alarmId: alarmId)
     }
     
     @objc private func didTapStop() {
         stopFeedback()
+        if let uuid = UUID(uuidString: alarmId) {
+            try? AlarmManager.shared.stop(id: uuid)
+        } else {
+            print("异常的alarmID = \(alarmId)")
+        }
         dismiss(animated: true)
         delegate?.alarmViewControllerDidTapStop(self, alarmId: alarmId)
     }
