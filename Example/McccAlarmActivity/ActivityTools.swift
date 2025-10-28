@@ -18,7 +18,7 @@ struct AlarmControls: View {
     var tintColor: Color
     
     var body: some View {
-        HStack(spacing: 8) {
+        HStack(spacing: 12) {
             switch state.mode {
             case .countdown:
                 ButtonView(config: presentation.countdown?.pauseButton, intent: PauseIntent(alarmID: state.alarmID.uuidString), tint: tintColor)

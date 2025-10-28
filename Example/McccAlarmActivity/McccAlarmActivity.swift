@@ -35,181 +35,176 @@ struct McccAlarmActivity: Widget {
             /// 3. 最小模式：当有多个Lvie Activity 时，灵动岛显示最小化。
             ///
             DynamicIsland {
-                // 展开时的布局：左侧区域。 标题
-                DynamicIslandExpandedRegion(.leading) {
-                    alarmTitle(attributes: context.attributes, state: context.state)
-                }
-                
-                // 展开时的布局：右侧区域。 图标
-                DynamicIslandExpandedRegion(.trailing) {
-                    Image(systemName: "timer")
-                        .font(.title2)
-                        .foregroundStyle(context.attributes.tintColor)
-                }
-                
-                // 展开时的布局：底部区域。
-                DynamicIslandExpandedRegion(.bottom) {
-                    bottomView(attributes: context.attributes, state: context.state)
+                DynamicIslandExpandedRegion(.center) {
+                    expandedRegionView(attributes: context.attributes, state: context.state)
                 }
             } compactLeading: {
                 // 紧凑状态左侧 - 显示倒计时
-                countdown(state: context.state, attributes: context.attributes, maxWidth: 44)
+                countdownView(attributes: context.attributes, state: context.state, style: .compact)
+                    .padding(.leading, 5)
             } compactTrailing: {
                 // 紧凑状态右侧 - 显示进度环
-                ProgressView(
-                    timerInterval: getCurrentFireDate(state: context.state),
-                    countsDown: true,
-                    label: { EmptyView() },
-                    currentValueLabel: {
-                        Image(systemName: "timer")
-                            .scaleEffect(0.8)
-                    })
-                .progressViewStyle(.circular)
-                .foregroundStyle(context.attributes.tintColor)
+                countdownProgressView(attributes: context.attributes, state: context.state)
+                    .padding(.trailing, 1)
             } minimal: {
-                // 最小状态 - 只显示图标
-//                Image(systemName: "timer")
-//                    .foregroundStyle(context.attributes.tintColor)
-                // 紧凑状态右侧 - 显示进度环
-                ProgressView(
-                    timerInterval: getCurrentFireDate(state: context.state),
-                    countsDown: true,
-                    label: { EmptyView() },
-                    currentValueLabel: {
-                        Image(systemName: "timer")
-                            .scaleEffect(0.8)
-                    })
-                .progressViewStyle(.circular)
-                .foregroundStyle(context.attributes.tintColor)
+                // 最小状态 - 显示进度环
+                countdownProgressView(attributes: context.attributes, state: context.state)
             }
             .keylineTint(context.attributes.tintColor)
         }
     }
-    
+}
+
+
+extension McccAlarmActivity {
     // MARK: - 锁屏界面
     func lockScreenView(attributes: AlarmAttributes<McccAlarmMetadata>, state: AlarmPresentationState) -> some View {
         VStack(spacing: 16) {
             // 顶部：Title + Subtitle
-            HStack(spacing: 8) {
-                // Title
+            HStack {
                 alarmTitle(attributes: attributes, state: state)
                     .font(.title3)
                     .foregroundStyle(attributes.tintColor)
                     .fontWeight(.semibold)
                     .layoutPriority(2)
                 
-                Spacer()
-
-                // Subtitle 居中对齐 Title
+                Spacer(minLength: 4) // 最小间距 4
+                
                 Text(attributes.metadata?.subTitle ?? "")
                     .font(.body)
                     .foregroundColor(.secondary)
                     .layoutPriority(1)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-
             
-            // 底部：倒计时 + 按钮
-            HStack(alignment: .center) {
-                // 左侧倒计时
-                countdown(state: state, attributes: attributes, maxWidth: 150)
-                
-                Spacer()
-                
-                AlarmControls(presentation: attributes.presentation, state: state, tintColor: attributes.tintColor)
-            }
+            
+            bottomView(attributes: attributes, state: state, style: .lockScreen)
         }
         .padding(EdgeInsets(top: 30, leading: 30, bottom: 20, trailing: 30))
         .frame(height: 140) // 可根据需求调整整体高度
+        .foregroundStyle(.red)
     }
+}
 
+
+
+
+extension McccAlarmActivity {
     
-    // MARK: - 底部视图
-    func bottomView(attributes: AlarmAttributes<McccAlarmMetadata>, state: AlarmPresentationState) -> some View {
-        HStack {
-            // 倒计时
-            countdown(state: state, attributes: attributes, maxWidth: 150)
-            
-            Spacer()
-            
-            // 控制按钮
-            AlarmControls(presentation: attributes.presentation, state: state, tintColor: attributes.tintColor)
-        }
+    enum CountdownStyle {
+        case lockScreen
+        case expanded
+        case compact
     }
     
-    // MARK: - 倒计时显示
-    func countdown(state: AlarmPresentationState,
-                   attributes: AlarmAttributes<McccAlarmMetadata>,
-                   maxWidth: CGFloat = .infinity) -> some View {
+    @ViewBuilder
+    func countdownView(
+        attributes: AlarmAttributes<McccAlarmMetadata>,
+        state: AlarmPresentationState,
+        style: CountdownStyle
+    ) -> some View {
+        // 字体/布局参数
+        let (fontSize, alignment, maxWidth): (CGFloat, Alignment, CGFloat) = {
+            switch style {
+            case .lockScreen:
+                return (72, .leading, 150)
+            case .expanded:
+                return (56, .leading, 150)
+            case .compact:
+                return (20, .center, 44)
+            }
+        }()
+        
+        // 主体视图（确保所有分支都有 View 返回）
         Group {
             switch state.mode {
             case .countdown(let countdown):
+                // 运行中：用 timerInterval 的 Text（会自动倒计时）
                 Text(timerInterval: Date.now...countdown.fireDate, countsDown: true)
-                    .font(.system(size: 100, design: .rounded))
-                    .foregroundStyle(attributes.tintColor)
+                    .font(.system(size: fontSize, design: .rounded))
                     .monospacedDigit()
+                    .foregroundStyle(attributes.tintColor)
+                    .frame(maxWidth: maxWidth, alignment: alignment)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.6)
                 
             case .paused(let pausedState):
+                // 暂停：计算剩余并用静态文本显示，带一个小的暂停图标
                 let remaining = Duration.seconds(
-                    pausedState.totalCountdownDuration - pausedState.previouslyElapsedDuration)
+                    pausedState.totalCountdownDuration - pausedState.previouslyElapsedDuration
+                )
                 let pattern: Duration.TimeFormatStyle.Pattern =
-                    remaining > .seconds(60 * 60) ? .hourMinuteSecond : .minuteSecond
-                Text(remaining.formatted(.time(pattern: pattern)))
-                    .font(.system(size: 80, design: .rounded))
-                    .foregroundStyle(attributes.tintColor)
+                    remaining > .seconds(3600) ? .hourMinuteSecond : .minuteSecond
                 
-            default:
+                Text(remaining.formatted(.time(pattern: pattern)))
+                    .font(.system(size: fontSize, design: .rounded))
+                    .monospacedDigit()
+                    .foregroundStyle(attributes.tintColor.opacity(0.85))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                
+            case .alert:
+                alarmTitle(attributes: attributes, state: state, fontSize: 26)
+
+                
+            @unknown default:
+                // 保底分支，避免返回 Void
                 EmptyView()
+                    .frame(maxWidth: maxWidth, alignment: alignment)
             }
         }
-        .lineLimit(1)
-        .minimumScaleFactor(0.6)
-        .frame(maxWidth: maxWidth, alignment: .leading)
+        .animation(.easeInOut(duration: 0.18), value: state.mode)
     }
-    
-    func countdownText(fireDate: Date) -> String {
-        let remaining = max(0, fireDate.timeIntervalSinceNow)
-        let hours = Int(remaining / 3600)
-        let minutes = Int((remaining.truncatingRemainder(dividingBy: 3600)) / 60)
-        let seconds = Int(remaining) % 60
+}
 
-        if hours > 0 {
-            return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
-        } else {
-            return String(format: "%02d:%02d", minutes, seconds)
-        }
-    }
-    
-    // MARK: - 标题
-    @ViewBuilder func alarmTitle(
+
+extension McccAlarmActivity {
+    @ViewBuilder
+    func expandedRegionView(
         attributes: AlarmAttributes<McccAlarmMetadata>,
         state: AlarmPresentationState
     ) -> some View {
-        let title: LocalizedStringResource? =
-            switch state.mode {
-            case .alert:
-                attributes.presentation.alert.title              // ⭐ 添加 alert 状态
-            case .countdown:
-                attributes.presentation.countdown?.title
-            case .paused:
-                attributes.presentation.paused?.title
-            @unknown default:
-                nil
+        VStack(spacing: 12) {
+            // 顶部标题 + 副标题
+            HStack(spacing: 6) {
+                alarmTitle(attributes: attributes, state: state)
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(attributes.tintColor)
+                    .lineLimit(1)
+                    .layoutPriority(2) // 优先显示title
+                
+                // 使用 Text + truncationMode 控制副标题截断
+                if let subTitle = attributes.metadata?.subTitle, !subTitle.isEmpty {
+                    Text(subTitle)
+                        .font(.body)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                        .truncationMode(.tail)
+                        .layoutPriority(1) // 空间不足时优先被截断
+                }
             }
-        
-        Text(title ?? "")
-            .font(.title2)
-            .fontWeight(.semibold)
-            .lineLimit(1)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            
+            // 底部控制/倒计时区域
+            bottomView(attributes: attributes, state: state, style: .expanded)
+    
+        }
+        .padding(.horizontal, 12)
     }
 
-    // MARK: - 辅助方法
-    private func getCurrentFireDate(state: AlarmPresentationState) -> ClosedRange<Date> {
-        switch state.mode {
-        case .countdown(let countdown):
-            return Date.now...countdown.fireDate
-        default:
-            return Date.now...Date.now
+    // MARK: - 底部视图
+    func bottomView(attributes: AlarmAttributes<McccAlarmMetadata>, state: AlarmPresentationState, style: CountdownStyle) -> some View {
+        HStack {
+            countdownView(attributes: attributes, state: state, style: style)
+            
+            Spacer()
+            
+            AlarmControls(
+                presentation: attributes.presentation,
+                state: state,
+                tintColor: attributes.tintColor
+            )
         }
     }
 }

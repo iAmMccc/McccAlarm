@@ -39,7 +39,7 @@ extension ViewController {
             
             let attributes = AlarmAttributes(
                 presentation: presentation,
-                metadata: McccAlarmMetadata(title: "倒计时闹钟1", subTitle: "快起床了"),
+                metadata: McccAlarmMetadata(title: "倒计时闹钟1", subTitle: "快起床了快起床了快起床了快起床了"),
                 tintColor: Color.green
             )
             let id = UUID()
