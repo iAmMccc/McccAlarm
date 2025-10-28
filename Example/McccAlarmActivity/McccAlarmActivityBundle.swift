@@ -16,7 +16,6 @@ import AppIntents
 struct McccAlarmActivityBundle: WidgetBundle {
     var body: some Widget {
         McccAlarmActivity()
-        McccAlarmActivity_EmptyMetadata()
     }
 }
 
