@@ -11,12 +11,13 @@ import AudioToolbox
 import AlarmKit
 
 // MARK: - 协议定义
+@available(iOS 26.0, *)
 public protocol McccSystemAlarmViewControllerDelegate: AnyObject {
     func alarmViewControllerDidTapRepeat(_ controller: McccSystemAlarmViewController, alarmId: String)
     func alarmViewControllerDidTapStop(_ controller: McccSystemAlarmViewController, alarmId: String)
 }
 
-// MARK: - 控制器实现
+@available(iOS 26.0, *)
 public class McccSystemAlarmViewController: UIViewController {
     
     // MARK: - 公共属性配置

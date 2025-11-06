@@ -8,7 +8,7 @@
 import Foundation
 import AlarmKit
 
-
+@available(iOS 26.0, *)
 public struct McccEmptyMetadata: AlarmMetadata {
     let createdAt: Date
     
@@ -19,6 +19,7 @@ public struct McccEmptyMetadata: AlarmMetadata {
 
 
 
+@available(iOS 26.0, *)
 public struct McccAlarmMetadata: AlarmMetadata {
     public let createdAt: Date
     public let title: String

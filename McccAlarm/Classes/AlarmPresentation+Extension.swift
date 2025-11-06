@@ -8,7 +8,7 @@
 import Foundation
 import AlarmKit
 
-
+@available(iOS 26.0, *)
 public extension AlarmPresentation.Alert {
     static func alert(title: LocalizedStringResource, needRepeat: Bool = true) -> AlarmPresentation.Alert {
         return AlarmPresentation.Alert(
@@ -20,7 +20,7 @@ public extension AlarmPresentation.Alert {
     }
 }
 
-
+@available(iOS 26.0, *)
 public extension AlarmPresentation.Countdown {
 
     static func countDown(title: LocalizedStringResource) -> AlarmPresentation.Countdown {
@@ -28,7 +28,7 @@ public extension AlarmPresentation.Countdown {
     }
 }
 
-
+@available(iOS 26.0, *)
 public extension AlarmPresentation.Paused {
     static func paused(title: LocalizedStringResource) -> AlarmPresentation.Paused {
         return AlarmPresentation.Paused(title: title, resumeButton: .resumeButton)

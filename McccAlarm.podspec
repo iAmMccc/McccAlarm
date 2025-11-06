@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'McccAlarm'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'A short description of McccAlarm.'
 
   s.homepage         = 'https://github.com/iAmMccc/McccAlarm'
@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.author           = { 'iAmMccc' => 'Mccc' }
   s.source           = { :git => 'https://github.com/iAmMccc/McccAlarm.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '26.0'
+  s.ios.deployment_target = '16.0'
 
   s.source_files = 'McccAlarm/Classes/**/*'
 

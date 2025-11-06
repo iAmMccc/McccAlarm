@@ -8,6 +8,9 @@
 import Foundation
 import AlarmKit
 // MARK: 授权
+
+
+@available(iOS 26.0, *)
 extension McccAlarm {
     
     /// 当前的是否授权了

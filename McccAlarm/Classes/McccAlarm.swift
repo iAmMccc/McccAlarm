@@ -12,7 +12,7 @@ import AlarmKit
  * 2.3 重复闹钟
  */
 
-
+@available(iOS 26.0, *)
 public struct McccAlarm {
     public static let shared = McccAlarm()
     

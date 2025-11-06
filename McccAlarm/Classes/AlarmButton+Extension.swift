@@ -9,6 +9,8 @@ import Foundation
 import AlarmKit
 import SwiftUI
 
+
+@available(iOS 26.0, *)
 extension AlarmButton {
     public static var openAppButton: Self {
         AlarmButton(text: "打开App", textColor: .black, systemImageName: "app.badge")
