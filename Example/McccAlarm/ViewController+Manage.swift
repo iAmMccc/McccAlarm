@@ -27,6 +27,7 @@ extension ViewController {
             
             do {
                 let alarms = try AlarmManager.shared.alarms
+                alarms.first?.id
                 print("=============")
                 print("查询到的闹钟alarms = \(alarms)")
                 print("=============")
