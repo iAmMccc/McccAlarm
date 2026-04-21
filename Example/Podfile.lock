@@ -1,5 +1,5 @@
 PODS:
-  - McccAlarm (0.1.1)
+  - McccAlarm (0.2.1)
 
 DEPENDENCIES:
   - McccAlarm (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  McccAlarm: 4fdb649b4e067e80f1fd04a2d2c9a3ee33472f5b
+  McccAlarm: fe41377306c7fcf8ac0b872665e030220bfec620
 
 PODFILE CHECKSUM: 31f8361bb42141bb8e065b97897dc6efb777f679
 
