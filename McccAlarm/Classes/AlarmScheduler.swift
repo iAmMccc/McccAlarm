@@ -22,10 +22,6 @@ public struct AlarmScheduler {
     }
 
     /// 批量调度
-    /// - Parameters:
-    ///   - fireDates: 要调度的触发日期列表
-    ///   - buildConfiguration: 根据 (uuid, fireDate) 构建 AlarmKit 配置。uuid 已自动生成。
-    /// - Returns: 成功调度的 (uuid, fireDate) 列表
     @discardableResult
     public static func schedule<M: AlarmMetadata>(
         fireDates: [Date],
@@ -40,7 +36,7 @@ public struct AlarmScheduler {
             do {
                 let _ = try await AlarmManager.shared.schedule(id: uuid, configuration: config)
                 results.append((uuid, fireDate))
-                McccAlarmLog.schedule("schedule: \u{2705} \(uuid) → \(fireDate)")
+                McccAlarmLog.schedule("schedule: ✅ \(uuid) → \(fireDate)")
             } catch {
                 McccAlarmLog.error("schedule: \(uuid) → \(fireDate) error=\(error)")
             }
@@ -50,31 +46,27 @@ public struct AlarmScheduler {
         return results
     }
 
-    /// 获取当前系统中所有 pending 的闹钟
-    public static func pendingAlarms() -> [Alarm<McccAlarmMetadata>] {
+    /// 获取当前系统中所有 pending 的闹钟 UUID
+    public static func pendingUUIDs() -> Set<UUID> {
         do {
-            return try AlarmManager.shared.alarms
+            let alarms = try AlarmManager.shared.alarms
+            return Set(alarms.map { $0.id })
         } catch {
             McccAlarmLog.error("读取 pending alarms 失败: \(error)")
             return []
         }
     }
 
-    /// 获取当前系统中所有 pending 的闹钟 UUID
-    public static func pendingUUIDs() -> Set<UUID> {
-        Set(pendingAlarms().map { $0.id })
+    /// 当前 pending 闹钟数量
+    public static func pendingCount() -> Int {
+        pendingUUIDs().count
     }
 
-    /// 根据 metadata 中的 alarmId 查找某个闹钟的所有 pending 触发器
-    public static func pendingAlarms(forAlarmId alarmId: String) -> [Alarm<McccAlarmMetadata>] {
-        pendingAlarms().filter { $0.metadata?.alarmId == alarmId }
-    }
-
-    /// 取消某个 alarmId 下所有 pending 触发器
-    public static func cancelAll(forAlarmId alarmId: String) {
-        let uuids = pendingAlarms(forAlarmId: alarmId).map { $0.id }
+    /// 取消所有闹钟
+    public static func cancelAll() {
+        let uuids = Array(pendingUUIDs())
         guard !uuids.isEmpty else { return }
-        McccAlarmLog.schedule("cancelAll: alarmId=\(alarmId) 取消 \(uuids.count) 个触发器")
+        McccAlarmLog.schedule("cancelAll: 取消 \(uuids.count) 个触发器")
         cancel(uuids: uuids)
     }
 }

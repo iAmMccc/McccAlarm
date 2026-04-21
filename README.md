@@ -122,12 +122,27 @@ StopIntent 失败（App 被杀死 + Extension 未执行）：
 
 以下是让节假日闹钟跑通的最小步骤：
 
-### Step 1：配置 App Group
+### Step 1：配置项目
 
-主 App 和 Extension 都需要开启同一个 App Group，用于共享节假日数据。
+**1.1 添加 McccAlarm 依赖**
 
-- Xcode → Target → Signing & Capabilities → + Capability → App Groups
+主 App 和 Extension target 都需要添加 McccAlarm（SPM 或 CocoaPods，见上方安装说明）。
+
+**1.2 配置 App Group**
+
+主 App 和 Extension 都需要开启同一个 App Group，用于共享节假日数据：
+
+- Xcode → 每个 Target → Signing & Capabilities → + Capability → App Groups
 - 两个 target 添加同一个 Group ID（如 `group.yourapp.alarm`）
+
+**1.3 Info.plist**
+
+如果使用 `CalendarHolidayFetcher` 从系统日历读取节假日，需要添加日历权限描述：
+
+```xml
+<key>NSCalendarsUsageDescription</key>
+<string>读取日历中的节假日信息，实现节假日自动跳过功能</string>
+```
 
 ### Step 2：实现 HolidayProvider
 
@@ -210,8 +225,12 @@ await McccAlarm.scheduleWithStrategy(
 
 ### Step 5：StopIntent 中补充调度
 
+> **注意**：AppIntents.swift 通常被主 App 和 Extension 两个 target 共享编译。确保两个 target 都添加了 McccAlarm 依赖，否则 Extension 编译时会报 `No such module`。
+
 ```swift
-// AppIntents.swift（Extension target 也能访问）
+// AppIntents.swift（主 App 和 Extension 共享）
+import McccAlarm
+
 struct MyStopIntent: LiveActivityIntent {
     func perform() throws -> some IntentResult {
         guard let uuid = UUID(uuidString: alarmID) else { return .result() }
@@ -291,17 +310,33 @@ McccAlarm.ensureAlarmsScheduled {
 
 ## 安装
 
-### CocoaPods
-
-```ruby
-pod 'McccAlarm'
-```
-
-### Swift Package Manager
+### Swift Package Manager（推荐）
 
 ```swift
 .package(url: "https://github.com/iAmMccc/McccAlarm.git", from: "0.2.0")
 ```
+
+或在 Xcode 中：File → Add Package Dependencies → 输入仓库地址。
+
+> **多 target 支持**：如果项目有 App Extension（如 Widget / LiveActivity），需要在主 App 和 Extension 的 target 中都添加 McccAlarm 依赖：
+> Target → General → Frameworks, Libraries, and Embedded Content → + → McccAlarm
+
+### CocoaPods
+
+```ruby
+pod 'McccAlarm', '~> 0.2.0'
+```
+
+> 如果有 Extension target 也需要使用：
+> ```ruby
+> target 'YourApp' do
+>   pod 'McccAlarm', '~> 0.2.0'
+> end
+>
+> target 'YourExtension' do
+>   pod 'McccAlarm', '~> 0.2.0'
+> end
+> ```
 
 ## 使用
 

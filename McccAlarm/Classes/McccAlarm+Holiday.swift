@@ -17,7 +17,7 @@ extension McccAlarm {
         _holidayProvider
     }
 
-    // MARK: - 首次调度（创建闹钟时）
+    // MARK: - 首次调度（创建 / 编辑闹钟时）
 
     /// 计算并调度未来 N 个有效触发器
     @discardableResult
@@ -34,9 +34,6 @@ extension McccAlarm {
             McccAlarmLog.info("strategy=.none 不需要节假日引擎，建议直接使用 AlarmKit 原生 Schedule.relative(repeats:)")
         }
 
-        // 先取消该闹钟已有的触发器（编辑场景）
-        AlarmScheduler.cancelAll(forAlarmId: alarmId)
-
         let fireDates = HolidaySchedulePolicy.nextValidFireDates(
             count: prefetchCount,
             interval: interval,
@@ -52,7 +49,7 @@ extension McccAlarm {
             return []
         }
 
-        McccAlarmLog.schedule("首次调度: alarmId=\(alarmId) 调度 \(fireDates.count) 个触发器")
+        McccAlarmLog.schedule("scheduleWithStrategy: alarmId=\(alarmId) 调度 \(fireDates.count) 个")
 
         return await AlarmScheduler.schedule(fireDates: fireDates) { uuid, fireDate in
             buildConfiguration(uuid, fireDate, fireDates)
@@ -61,7 +58,7 @@ extension McccAlarm {
 
     // MARK: - 补充调度（触发后 / 进前台时）
 
-    /// 检查并补充到目标数量（不取消已有的 sibling）
+    /// 计算 targetCount 个有效日期并调度，AlarmKit 对同一 UUID 会自动去重
     @discardableResult
     public static func replenish(
         alarmId: String,
@@ -72,47 +69,29 @@ extension McccAlarm {
         targetCount: Int = AlarmScheduler.defaultPrefetchCount,
         buildConfiguration: @escaping (UUID, Date, [Date]) -> AlarmManager.AlarmConfiguration<McccAlarmMetadata>
     ) async -> [(uuid: UUID, fireDate: Date)] {
-        // 查询当前 pending 的触发器
-        let pendingAlarms = AlarmScheduler.pendingAlarms(forAlarmId: alarmId)
-        let pendingCount = pendingAlarms.count
-        let deficit = targetCount - pendingCount
-
-        McccAlarmLog.schedule("replenish: alarmId=\(alarmId) pending=\(pendingCount) 目标=\(targetCount) 差额=\(deficit)")
-
-        guard deficit > 0 else {
-            McccAlarmLog.schedule("replenish: 数量充足，无需补充")
-            return []
-        }
-
-        // 从最后一个 pending 的日期之后开始计算，避免重复
-        let lastPendingDate = pendingAlarms
-            .compactMap { $0.metadata?.fireDate }
-            .max() ?? Date()
-
-        let newFireDates = HolidaySchedulePolicy.nextValidFireDates(
-            count: deficit,
+        let fireDates = HolidaySchedulePolicy.nextValidFireDates(
+            count: targetCount,
             interval: interval,
             strategy: strategy,
-            after: lastPendingDate,
+            after: Date(),
             hour: hour,
             minute: minute,
             holidayProvider: _holidayProvider
         )
 
-        guard !newFireDates.isEmpty else {
-            McccAlarmLog.error("replenish: 未找到新的有效日期")
+        guard !fireDates.isEmpty else {
+            McccAlarmLog.error("replenish: 未找到有效日期 alarmId=\(alarmId)")
             return []
         }
 
-        let allFireDates = pendingAlarms.compactMap { $0.metadata?.fireDate } + newFireDates
-        McccAlarmLog.schedule("replenish: 补充 \(newFireDates.count) 个触发器")
+        McccAlarmLog.schedule("replenish: alarmId=\(alarmId) 补充 \(fireDates.count) 个")
 
-        return await AlarmScheduler.schedule(fireDates: newFireDates) { uuid, fireDate in
-            buildConfiguration(uuid, fireDate, allFireDates)
+        return await AlarmScheduler.schedule(fireDates: fireDates) { uuid, fireDate in
+            buildConfiguration(uuid, fireDate, fireDates)
         }
     }
 
-    /// 检查并补充所有需要调度的闹钟（App 进前台/冷启动时调用）
+    /// App 进前台 / 冷启动时兜底检查
     public static func ensureAlarmsScheduled(checker: () throws -> Void) rethrows {
         try checker()
     }
