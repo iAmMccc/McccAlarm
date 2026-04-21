@@ -17,5 +17,6 @@
   "platforms": {
     "ios": "16.0"
   },
-  "source_files": "McccAlarm/Classes/**/*"
+  "source_files": "McccAlarm/Classes/**/*",
+  "frameworks": "EventKit"
 }

@@ -59,7 +59,7 @@ public class McccSystemAlarmViewController: UIViewController {
     
     private let repeatButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("重复", for: .normal)
+        button.setTitle(McccAlarm.ButtonText.repeat, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemOrange
         button.titleLabel?.font = .systemFont(ofSize: 38, weight: .medium)
@@ -71,7 +71,7 @@ public class McccSystemAlarmViewController: UIViewController {
     
     private let stopButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("停止", for: .normal)
+        button.setTitle(McccAlarm.ButtonText.stop, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         button.titleLabel?.font = .systemFont(ofSize: 38, weight: .medium)

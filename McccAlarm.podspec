@@ -19,5 +19,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '16.0'
 
   s.source_files = 'McccAlarm/Classes/**/*'
+  s.frameworks = 'EventKit'
 
 end

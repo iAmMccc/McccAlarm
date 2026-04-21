@@ -17,7 +17,11 @@ let package = Package(
             name: "McccAlarm",
             path: "McccAlarm",
             sources: ["Classes"],
-            publicHeadersPath: nil
+            publicHeadersPath: nil,
+            linkerSettings: [
+                .linkedFramework("EventKit"),
+                .linkedFramework("AlarmKit", .when(platforms: [.iOS]))
+            ]
         ),
     ]
 )
