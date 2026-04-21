@@ -19,7 +19,7 @@ extension McccAlarm {
 
     // MARK: - 首次调度（创建 / 编辑闹钟时）
 
-    /// 计算并调度未来 N 个有效触发器
+    /// 计算并调度未来 N 个有效触发器（会先取消该 alarmId 下已有的）
     @discardableResult
     public static func scheduleWithStrategy(
         alarmId: String,
@@ -58,7 +58,7 @@ extension McccAlarm {
 
     // MARK: - 补充调度（触发后 / 进前台时）
 
-    /// 计算 targetCount 个有效日期并调度，AlarmKit 对同一 UUID 会自动去重
+    /// 计算目标日期，只补充系统中尚未存在的，不会重复调度
     @discardableResult
     public static func replenish(
         alarmId: String,
@@ -69,7 +69,7 @@ extension McccAlarm {
         targetCount: Int = AlarmScheduler.defaultPrefetchCount,
         buildConfiguration: @escaping (UUID, Date, [Date]) -> AlarmManager.AlarmConfiguration<McccAlarmMetadata>
     ) async -> [(uuid: UUID, fireDate: Date)] {
-        let fireDates = HolidaySchedulePolicy.nextValidFireDates(
+        let targetDates = HolidaySchedulePolicy.nextValidFireDates(
             count: targetCount,
             interval: interval,
             strategy: strategy,
@@ -79,15 +79,23 @@ extension McccAlarm {
             holidayProvider: _holidayProvider
         )
 
-        guard !fireDates.isEmpty else {
+        guard !targetDates.isEmpty else {
             McccAlarmLog.error("replenish: 未找到有效日期 alarmId=\(alarmId)")
             return []
         }
 
-        McccAlarmLog.schedule("replenish: alarmId=\(alarmId) 补充 \(fireDates.count) 个")
+        // 只调度尚未存在于系统中的日期
+        let newDates = AlarmScheduler.datesNeedingSchedule(targetDates: targetDates)
 
-        return await AlarmScheduler.schedule(fireDates: fireDates) { uuid, fireDate in
-            buildConfiguration(uuid, fireDate, fireDates)
+        if newDates.isEmpty {
+            McccAlarmLog.schedule("replenish: alarmId=\(alarmId) 所有 \(targetDates.count) 个日期已存在，无需补充")
+            return []
+        }
+
+        McccAlarmLog.schedule("replenish: alarmId=\(alarmId) 目标 \(targetDates.count) 个, 已存在 \(targetDates.count - newDates.count) 个, 补充 \(newDates.count) 个")
+
+        return await AlarmScheduler.schedule(fireDates: newDates) { uuid, fireDate in
+            buildConfiguration(uuid, fireDate, targetDates)
         }
     }
 
